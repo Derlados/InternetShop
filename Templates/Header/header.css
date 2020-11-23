@@ -11,27 +11,30 @@
 }
 
 div.header {
-    height: 40px;
+    display: flex;
+    height: 50px;
+    width: 100%;
 }
 
 div.logo {
     float: left;
     height: 100%;
-    width: 200px;
+    width: 300px;
 }
 
 div.search {
-    margin-left: 30px;
-    float: left;
+    display: flex;
+    justify-content: center;
     height: 100%;
-    width: 70%;
-    min-width: 500px;
+    width: 100%;
+    min-width: 200px;
+    margin-left: 50px;
 }
 
 div.buttons {
-    float: left;
+    float: right;
     height: 100%;
-    width: 15%;
+    min-width: 300px;
 }
 
 button.bt_select_category {
@@ -39,7 +42,7 @@ button.bt_select_category {
     border-radius: 0;
     border: none;
     height: 100%;
-    width: 200px;
+    min-width: 170px;
     outline: none;
 }
 
@@ -47,18 +50,26 @@ button.bt_search_action {
     float: left;
     border-radius: 0;
     height: 100%;
-    width: 150px;
     border: none;
     outline: none;
+    min-width: 100px;
     background-color: #04af00;
 }
 
 input.in_search_text {
     float: left;
     height: 100%;
-    width: 70%;
     margin: 0px;
+    width: 100%;
     padding-left: 10px;
     display: block;
     outline: none;
+    border: 1px solid rgb(224, 224, 224);
+}
+
+img.img_button {
+    float: left;
+    margin-left: 20px;
+    height: 100%;
+    width: auto;
 }
