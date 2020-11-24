@@ -8,7 +8,6 @@
 
         }
 
-
         /** GET запросы
          * internetShop/<catalog> - загрузка первой страницы каталога комплектующих
          * internetShop/<catalog>/page=%d - загрузка страницы соответствующего каталога
@@ -18,23 +17,27 @@
          */
         public function viewAction() {
 
+
             switch ($this->requestUri[0]) {
                 case '':
+                    $categories = getAllCategory($this->db);
+                    $file_body = "catalog_body.php");
+                    include("templates/shop_page/header.php");
                     break;
                 case 'processors':
-                    getGoodPreview($this->db, "Процессоры");
-                    $this->db->closeConnection();
+                    return getGoodPreview($this->db, "Процессоры");
                     break;
                 case 'videocards':
                     break;
                 case 'motherboards':
                     break;
-                case 'SSD':
+                case 'ssd':
                     break;
-                case 'HDD':
+                case 'hdd':
                     break;
-                case '':
             }
+
+            $this->db->closeConnection();
         }
 
         public function deleteAction() {

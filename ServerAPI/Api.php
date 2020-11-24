@@ -14,7 +14,7 @@
         {
             $this->db = new DataBase();
             $this->method = $_SERVER['REQUEST_METHOD'];
-            $this->requestUri = $requestUri;     
+            $this->requestUri = $requestUri;          
         }
         
         // Обрабатывает запрос

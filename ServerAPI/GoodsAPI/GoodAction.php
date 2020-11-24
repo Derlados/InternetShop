@@ -47,4 +47,12 @@ function getFiltersQuery($nameAttr) {
                                                                     FROM characteristic 
                                                                     WHERE characteristic.characteristic = '$nameAttr')";
 }
+
+// Запрос на получение всех категорий
+function getAllCategory(DataBase $db) {
+    $sqlGetAllCategory = "SELECT * FROM category";
+    $data = $db->execQuery($sqlGetAllCategory, ReturnValue::GET_ARRAY);
+    
+    return $data;
+}
 ?>

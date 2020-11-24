@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="/styles/header.css">
+        <link rel="stylesheet" href="/styles/body_main.css">
     </head>
-    <body style="margin-left: 50px; margin-right: 50px; margin-top: 20px;">
+    <body style="margin-left: 150px; margin-right: 150px; margin-top: 20px;">
         <div class="header">
             <div class="logo">
                 <img src="../../Images/Site/logo.jpg" style="height: 100%; width: auto;">
@@ -24,5 +25,6 @@
                 <img class="img_button" src="../../Images/Site/cart.png">
             </div>
         </div>
+        <?php include("catalog_body.php") ?>
     </body>
 </html>
