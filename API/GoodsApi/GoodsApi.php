@@ -1,6 +1,6 @@
 <?php
-    require_once ('Api.php');
-    require_once ('GoodsApi');
+    require_once ('API/Api.php');
+    require_once ('GoodsAction.php');
 
     class GoodApi extends Api {
 
@@ -19,16 +19,20 @@
                 $categories = getAllCategory($this->db);
                 include('templates/catalog/catalog.php');
             }
-            else if (preg_match("/([a-z])+/", $this->requestUri[0]) !== false) {
-                //$goods = getGoodPreview($this->db, $this->requestUri[0]);
+            else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
+                $goods = getGoodPreview($this->db, $this->requestUri[0]);
+                $category = getNameCategory($this->db, $this->requestUri[0])['category'];
+
+                if ($goods == null || $category == null) {
+                   //TODO
+                   return;
+                }
+
                 $filters = getProcessorsFilters($this->db);
-                $goods = getGoodPreview($this->db, "Процессоры");
                 include('templates/shop_search/shop_search_body.php');
             }
 
             $this->db->closeConnection();
-
-            include("templates/shop_page/shop_header.php");
         }
 
         public function deleteAction() { }

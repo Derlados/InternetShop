@@ -40,7 +40,7 @@
 
             // Если ожидается ответ (SELECT запрос), формируется массив данных
             if ($returnValue == ReturnValue::GET_OBJECT)
-                return json_encode(mysqli_fetch_assoc($result));
+                return mysqli_fetch_assoc($result);
             else if ($returnValue == ReturnValue::GET_ARRAY)
             {
                 if ($result != NULL)

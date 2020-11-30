@@ -1,5 +1,5 @@
 <?php           
-    require_once ('API/GoodApi.php');
+    require_once ('API/GoodsApi/GoodsApi.php');
     require_once ('API/Api.php');
 
     // Возникла сложность с GET запросами, их параметрі передаются вместе с адресной строкой,
@@ -9,4 +9,6 @@
 
     $currentApi = new GoodApi($requestUri); // текущее API для работы
     $currentApi->run();
+    
+    http_response_code(404);
 ?>

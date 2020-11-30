@@ -1,18 +1,18 @@
 <?php
     /**
      * @param db - экземпляр базы данных
-     * @param name - название категории
+     * @param category - категория
      * @param page - номер страницы (каждая страница, это 20 товаров максимум)
      */
-    function getGoodPreview(DataBase $db, $name, $page = 0) {
+    function getGoodPreview(DataBase $db, $category, $page = 0) {
         $offset = $page * 20; // Сдвиг выборки относительно страницы
         
         $sqlgetProcessors = "   SELECT * FROM `component` 
-                                WHERE component.id_category = (SELECT id_category FROM category WHERE category.category = '$name')
+                                WHERE component.id_category = (SELECT id_category FROM category WHERE category.url_category = '$category')
                                 LIMIT 20 OFFSET $offset";
 
         $data = $db->execQuery($sqlgetProcessors, ReturnValue::GET_ARRAY);
-        return json_encode($data);
+        return $data;
     }
 
     // Загрузка полной информации комплектующего по id
@@ -23,7 +23,7 @@
                         WHERE `components_characteristic`.`id_component` = '$id'";
 
         $data = $db->execQuery($sqlFullData, ReturnValue::GET_ARRAY);
-        return json_encode($data);
+        return $data;
     }
 
     // Загрузка фильтров процессора
@@ -39,7 +39,7 @@
         $filters["Теплопакет (TDP)"] = $db->execQuery(getFiltersQuery("Теплопакет (TDP)"), ReturnValue::GET_ARRAY);
         $filters["Техпроцесс, nm"] = $db->execQuery(getFiltersQuery("Техпроцесс, nm"), ReturnValue::GET_ARRAY);
 
-        return json_encode($filters);
+        return $filters;
     }
 
     // Запрос на получение фильтров по названию аттрибута
@@ -48,13 +48,21 @@
                 FROM `components_characteristic` 
                 WHERE components_characteristic.id_characteristic = (  SELECT characteristic.id_characteristic 
                                                                         FROM characteristic 
-                                                                        WHERE characteristic.characteristic = '$nameAttr')";
+                                                                        WHERE characteristic.characteristic = '$nameAttr')
+                ORDER BY CONVERT(components_characteristic.value, SIGNED INTEGER);";
     }
 
     // Запрос на получение всех категорий
     function getAllCategory(DataBase $db) {
         $sqlGetAllCategory = "SELECT * FROM category";
         $data = $db->execQuery($sqlGetAllCategory, ReturnValue::GET_ARRAY);  
+        return $data;
+    }
+
+    function getNameCategory(DataBase $db, $category) {
+        $sqlNameCategory = "    SELECT category.category FROM category 
+                                WHERE category.url_category='$category'";
+        $data = $db->execQuery($sqlNameCategory, ReturnValue::GET_OBJECT);
         return $data;
     }
 ?>

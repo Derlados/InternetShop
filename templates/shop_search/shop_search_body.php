@@ -15,7 +15,25 @@
             </ul>
             <h1 class="component_title"><?php echo $category; ?></h1>
             <div class="content_body">
-                
+                <div class="filters">
+                    <?php
+                        $keys = array_keys($filters);
+                        for ($i = 0; $i < count($filters); ++$i) {
+                            $filterGroup = $keys[$i];
+
+                            echo '<div class="filter-item">
+                            <span class="filter_text"><b>'.$filterGroup.'</b></span>';
+
+                            $filterValues = $filters[$filterGroup];
+                            for ($j = 0; $j < count($filterValues); ++$j) {
+                                $filterValue = $filterValues[$j]['value'];
+                                include("templates/shop_search/filter_value.php");
+                            }
+
+                            echo '</div>';
+                        }    
+                    ?>
+                </div>
             </div>
         </div>
     </body>
