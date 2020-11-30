@@ -1,0 +1,66 @@
+
+.goods_list {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+
+.goods_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    outline-offset: -2px;
+    outline: 2px solid green;
+
+    width: 300px;
+    min-width: 300px;
+}
+
+.goods_img {
+    width: 70%;
+    height: auto;
+}
+
+.goods_name {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.goods_price {
+    margin-top: 10px;
+}
+
+.goods_price b {
+    font-size: 24px;
+}
+
+.goods_buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.goods_buy_bt {
+    width: 120px;
+    height: 40px;
+    color: white;
+    background: green;
+    padding: 10px;
+}
+
+.goods_buy_bt { 
+    text-align: center;
+}
+
+.goods_img_bt {
+    margin-left: 15px;
+    height: 40px;
+    width: auto;
+}
