@@ -1,10 +1,17 @@
-<?php
-    /**
+<?php   
+    // Подключение всех файлов
+    foreach (scandir('Objects/Goods/') as $filename) {
+        $path = 'Objects/Goods/' . $filename;
+        if (is_file($path))
+            require_once($path);
+    }
+
+    /** Запрос на получение превью данных о товаре
      * @param db - экземпляр базы данных
      * @param category - категория
      * @param page - номер страницы (каждая страница, это 20 товаров максимум)
      */
-    function getGoodPreview(DataBase $db, $category, $page = 0) {
+    function getGoodPreview(DataBase $db, string $category, int $page = 0) {
         $offset = $page * 20; // Сдвиг выборки относительно страницы
         
         $sqlgetProcessors = "   SELECT * FROM `component` 
@@ -12,11 +19,11 @@
                                 LIMIT 20 OFFSET $offset";
 
         $data = $db->execQuery($sqlgetProcessors, ReturnValue::GET_ARRAY);
-        return $data;
+        return json_encode($data);
     }
 
     // Загрузка полной информации комплектующего по id
-    function getGoodFullData(DataBase $db, $id) {
+    function getGoodFullData(DataBase $db, int $id) {
         $sqlFullData = "SELECT characteristic.characteristic, components_characteristic.value 
                         FROM `components_characteristic` 
                         INNER JOIN characteristic ON characteristic.id_characteristic = components_characteristic.id_characteristic 
@@ -26,30 +33,26 @@
         return $data;
     }
 
-    // Загрузка фильтров процессора
-    function getProcessorsFilters(DataBase $db) {
-
-        $filters = array();
-
-        $filters["Производитель"] = array(["value" => "Intel"], ["value" => "AMD"]);
-        $filters["Частота ядра"] = array(["value" => "1.0 - 1.5"], ["value" => "1.5 - 3.0"], ["value" => "3.0 - 3.2"], ["value" => "3.3 - 3.5"], ["value" => "3.6 - 4.2"]);
-        $filters["Семейство процессора"] = $db->execQuery(getFiltersQuery("Семейство процессора"), ReturnValue::GET_ARRAY);
-        $filters["Тип сокета"] = $db->execQuery(getFiltersQuery("Тип сокета"), ReturnValue::GET_ARRAY);
-        $filters["Количество ядер"] = $db->execQuery(getFiltersQuery("Количество ядер"), ReturnValue::GET_ARRAY);
-        $filters["Теплопакет (TDP)"] = $db->execQuery(getFiltersQuery("Теплопакет (TDP)"), ReturnValue::GET_ARRAY);
-        $filters["Техпроцесс, nm"] = $db->execQuery(getFiltersQuery("Техпроцесс, nm"), ReturnValue::GET_ARRAY);
-
+    /** Загрузка фильтров в соответствии с категорией
+     * @param db - объект менеджера базы данных
+     * @param category - категория для фильтров
+     */
+    function getFilters(DataBase $db, $category) {
+        $filterGroups = getFiltersGroups($category);
+        for ($i = 0; $i < count($filterGroups); ++$i)
+            $filters[$filterGroups[$i]] = $db->execQuery(getFiltersQuery($filterGroups[$i]), ReturnValue::GET_ARRAY);
+        
         return $filters;
     }
 
     // Запрос на получение фильтров по названию аттрибута
-    function getFiltersQuery($nameAttr) {
+    function getFiltersQuery(string $nameAttr) {
         return "SELECT DISTINCT(components_characteristic.value) 
                 FROM `components_characteristic` 
                 WHERE components_characteristic.id_characteristic = (  SELECT characteristic.id_characteristic 
                                                                         FROM characteristic 
                                                                         WHERE characteristic.characteristic = '$nameAttr')
-                ORDER BY CONVERT(components_characteristic.value, SIGNED INTEGER);";
+                ORDER BY CONVERT(components_characteristic.value, SIGNED INTEGER), components_characteristic.value;";
     }
 
     // Запрос на получение всех категорий
@@ -59,11 +62,22 @@
         return $data;
     }
 
-    function getNameCategory(DataBase $db, $category) {
+    /** Запрос на получение названия категории
+     * @param db - менеджер базы данных
+     * @param urlCategory - название категории в url запросе
+     */
+    function getNameCategory(DataBase $db, string $urlCategory) {
         $sqlNameCategory = "    SELECT category.category FROM category 
-                                WHERE category.url_category='$category'";
+                                WHERE category.url_category='$urlCategory'";
         $data = $db->execQuery($sqlNameCategory, ReturnValue::GET_OBJECT);
         return $data;
+    }
+
+    function getFiltersGroups($category) {
+        switch($category) {
+            case "processors":
+                return ['Производитель', 'Частота ядра', 'Тип сокета', 'Техпроцесс, nm', 'Количество ядер', 'Теплопакет (TDP)'];
+        }
     }
 ?>
         

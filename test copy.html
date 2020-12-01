@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/shop_search.css">
         <link rel="stylesheet" href="styles/goods_search.css">
+        <link rel="stylesheet" href="styles/filters.css">
+        <script src="scripts/filters.js"></script>
     </head>
     <body style="margin-left: 150px; margin-right: 150px; margin-top: 20px;">
         <div class="header">
@@ -30,11 +32,25 @@
         <div class="body_main">
             <ul class="route_list">
                 <li>Главная</li>
-                <li><?php echo ?></li>
             </ul>
             <h1 class="component_title">Процессоры</h1>
             <div class="content_body">
-                
+                <div id="filter_item_0" class="filter_item">
+                    <div class="filter_group">
+                        <span class="filter_text"><b>Производитель</b></span>
+                        <img id="filter_img_0" class="filter_img" src="Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_0', 'filter_img_0')">
+                    </div>      
+                    <div class="checkbox"> 
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span class="checkmark_text">INTEL</span>
+                    </div>
+                    <div class="checkbox"> 
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span class="checkmark_text">AMD</span>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

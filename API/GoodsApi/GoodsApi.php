@@ -1,4 +1,9 @@
 <?php
+    foreach (scandir('Objects/Goods/') as $filename) {
+        $path = 'Objects/Goods/' . $filename;
+        if (is_file($path))
+            require_once($path);
+    }
     require_once ('API/Api.php');
     require_once ('GoodsAction.php');
 
@@ -20,15 +25,16 @@
                 include('templates/catalog/catalog.php');
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
-                $goods = getGoodPreview($this->db, $this->requestUri[0]);
-                $category = getNameCategory($this->db, $this->requestUri[0])['category'];
+                $urlCaregory = $this->requestUri[0];
+                $goodsJson = getGoodPreview($this->db, $urlCaregory);
+                $category = getNameCategory($this->db, $urlCaregory)['category'];
 
-                if ($goods == null || $category == null) {
+                if ($goodsJson == null || $category == null) {
                    //TODO
                    return;
                 }
 
-                $filters = getProcessorsFilters($this->db);
+                $filters = getFilters($this->db, $urlCaregory);
                 include('templates/shop_search/shop_search_body.php');
             }
 
