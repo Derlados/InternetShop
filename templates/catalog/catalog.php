@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/catalog_search.css">
     </head>
-    <body style="margin-left: 150px; margin-right: 150px; margin-top: 20px;">
+    <body>
         <?php include("templates/shop_main/shop_header.html")?>
         <div class="body_main">
             <ul class="route_list">

@@ -1,11 +1,11 @@
 <?php
 
     class Goods {    
-        protected $id_component;
-        protected $component;
-        protected $cost;
-        protected $count_component;
-        protected $img;
+        public $id_component;
+        public $name;
+        public $price;
+        public $count_component;
+        public $img;
 
         /** 
          * Конструктор - создание нового объекта

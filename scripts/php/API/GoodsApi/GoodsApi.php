@@ -1,11 +1,11 @@
 <?php
-    foreach (scandir('Objects/Goods/') as $filename) {
-        $path = 'Objects/Goods/' . $filename;
+    foreach (scandir('scripts/php/Objects/Goods/') as $filename) {
+        $path = 'scripts/php/Objects/Goods/' . $filename;
         if (is_file($path))
             require_once($path);
     }
-    require_once ('API/Api.php');
-    require_once ('GoodsAction.php');
+    require_once ('scripts/php/API/Api.php');
+    require_once ('scripts/php/API/GoodsApi/GoodsAction.php');
 
     class GoodApi extends Api {
 
@@ -33,6 +33,11 @@
                    //TODO
                    return;
                 }
+
+                // Десериализация всех товаров
+                $goodsItems = array();
+                for ($i = 0; $i < count($goodsJson); ++$i)
+                    $goodsItems[$i] = new Goods($goodsJson[$i]);
 
                 $filters = getFilters($this->db, $urlCaregory);
                 include('templates/shop_search/shop_search_body.php');

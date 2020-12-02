@@ -1,6 +1,6 @@
 <?php           
-    require_once ('API/GoodsApi/GoodsApi.php');
-    require_once ('API/Api.php');
+    require_once ('scripts/php/API/GoodsApi/GoodsApi.php');
+    require_once ('scripts/php/API/Api.php');
 
     // Возникла сложность с GET запросами, их параметрі передаются вместе с адресной строкой,
     // потому необходимо удалить все значения после ?, так же необходимо добавлять в конце '?' чтобы функция могла нормально спарсить

@@ -1,7 +1,7 @@
 <?php   
     // Подключение всех файлов
-    foreach (scandir('Objects/Goods/') as $filename) {
-        $path = 'Objects/Goods/' . $filename;
+    foreach (scandir('scripts/php/Objects/Goods/') as $filename) {
+        $path = 'scripts/php/Objects/Goods/' . $filename;
         if (is_file($path))
             require_once($path);
     }
@@ -19,7 +19,7 @@
                                 LIMIT 20 OFFSET $offset";
 
         $data = $db->execQuery($sqlgetProcessors, ReturnValue::GET_ARRAY);
-        return json_encode($data);
+        return $data;
     }
 
     // Загрузка полной информации комплектующего по id

@@ -1,5 +1,5 @@
 <?php
-    require_once 'Managers/DataBase.php';
+    require_once 'scripts/php/Managers/DataBase.php';
 
     //abstract class Api
     abstract class Api

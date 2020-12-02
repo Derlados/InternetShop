@@ -6,11 +6,11 @@
         <link rel="stylesheet" href="styles/shop_search.css">
         <link rel="stylesheet" href="styles/goods_search.css">
         <link rel="stylesheet" href="styles/filters.css">
-        <script src="scripts/filters.js"></script>
+        <script src="scripts/js/filters.js"></script>
     </head>
     <body>
         <?php include("templates/shop_main/shop_header.html")?>
-        <div class="search_body_main">
+        <div class="body_main">
             <ul class="route_list">
                 <li>Главная</li>
                 <li><?php echo $category; ?></li>
@@ -41,6 +41,14 @@
 
                             echo '</div>';
                         }    
+                    ?>
+                </div>
+                <div class="goods_list">
+                    <?php
+                        for ($i = 0; $i < count($goodsItems); ++$i) {
+                            $good = $goodsItems[$i];
+                            include ("templates/shop_search/goods_item.php");
+                        }
                     ?>
                 </div>
             </div>
