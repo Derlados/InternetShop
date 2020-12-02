@@ -1,6 +1,7 @@
 function hideCheckbox(idItem, idImg) {
     let filter_item = document.getElementById(idItem);
     let filter_img = document.getElementById(idImg);
+    console.log(idImg);
     let checkboxes = filter_item.children;
 
     if (checkboxes[1].style.display != 'flex')

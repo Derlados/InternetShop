@@ -9,6 +9,4 @@
 
     $currentApi = new GoodApi($requestUri); // текущее API для работы
     $currentApi->run();
-    
-    http_response_code(404);
 ?>

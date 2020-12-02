@@ -1,5 +1,8 @@
-div.body_main {
+div.search_body_main {
     margin-top: 30px;
+    padding-left: 150px; 
+    padding-right: 150px;
+    padding-top: 20px;
 }
 
 ul.route_list li {

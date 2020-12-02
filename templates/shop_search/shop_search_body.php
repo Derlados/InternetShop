@@ -5,10 +5,12 @@
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/shop_search.css">
         <link rel="stylesheet" href="styles/goods_search.css">
+        <link rel="stylesheet" href="styles/filters.css">
+        <script src="scripts/filters.js"></script>
     </head>
-    <body style="margin-left: 150px; margin-right: 150px; margin-top: 20px;">
+    <body>
         <?php include("templates/shop_main/shop_header.html")?>
-        <div class="body_main">
+        <div class="search_body_main">
             <ul class="route_list">
                 <li>Главная</li>
                 <li><?php echo $category; ?></li>
@@ -21,8 +23,15 @@
                         for ($i = 0; $i < count($filters); ++$i) {
                             $filterGroup = $keys[$i];
 
-                            echo '<div class="filter-item">
-                            <span class="filter_text"><b>'.$filterGroup.'</b></span>';
+                            // Определение id для фильтра и изображения (кнопка стролочка)
+                            $filterItemId = "filter_item_$i";
+                            $filterImgId = "filter_img_$i";
+
+                            echo '<div id="'.$filterItemId.'" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>'.$filterGroup.'</b></span>
+                                        <img id="'.$filterImgId.'" class="filter_img" src="Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')">
+                                    </div>';
 
                             $filterValues = $filters[$filterGroup];
                             for ($j = 0; $j < count($filterValues); ++$j) {

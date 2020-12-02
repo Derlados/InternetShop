@@ -12,20 +12,26 @@
 
 div.header {
     display: flex;
-    height: 50px;
+    height: 90px;
     width: 100%;
+    padding-left: 150px; 
+    padding-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    outline-offset: -2px;
+    outline: 2px solid rgba(224, 224, 224, 0.507);
 }
 
 div.logo {
     float: left;
-    height: 100%;
+    height: 50px;
     width: 300px;
 }
 
 div.search {
     display: flex;
     justify-content: center;
-    height: 100%;
+    height: 50px;
     width: 100%;
     min-width: 200px;
     margin-left: 50px;
@@ -33,7 +39,7 @@ div.search {
 
 div.buttons {
     float: right;
-    height: 100%;
+    height: 50px;
     min-width: 300px;
 }
 
@@ -41,7 +47,7 @@ button.bt_select_category {
     float: left;
     border-radius: 0;
     border: none;
-    height: 100%;
+    height: 50px;
     min-width: 170px;
     outline: none;
 }
@@ -49,7 +55,7 @@ button.bt_select_category {
 button.bt_search_action {
     float: left;
     border-radius: 0;
-    height: 100%;
+    height: 50px;
     border: none;
     outline: none;
     min-width: 100px;
@@ -58,7 +64,7 @@ button.bt_search_action {
 
 input.in_search_text {
     float: left;
-    height: 100%;
+    height: 50px;
     margin: 0px;
     width: 100%;
     padding-left: 10px;
@@ -70,6 +76,6 @@ input.in_search_text {
 img.img_button {
     float: left;
     margin-left: 20px;
-    height: 100%;
+    height: 50px;
     width: auto;
 }
