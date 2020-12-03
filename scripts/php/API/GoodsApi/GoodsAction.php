@@ -8,14 +8,14 @@
 
     /** Запрос на получение превью данных о товаре
      * @param db - экземпляр базы данных
-     * @param category - категория
+     * @param categoryUrl - категория из url запроса
      * @param page - номер страницы (каждая страница, это 20 товаров максимум)
      */
-    function getGoodPreview(DataBase $db, string $category, int $page = 0) {
-        $offset = $page * 20; // Сдвиг выборки относительно страницы
+    function getGoodPreview(DataBase $db, string $categoryUrl, int $page) {
+        $offset = ($page - 1) * 20; // Сдвиг выборки относительно страницы
         
         $sqlgetProcessors = "   SELECT * FROM `component` 
-                                WHERE component.id_category = (SELECT id_category FROM category WHERE category.url_category = '$category')
+                                WHERE component.id_category = (SELECT id_category FROM category WHERE category.url_category = '$categoryUrl')
                                 LIMIT 20 OFFSET $offset";
 
         $data = $db->execQuery($sqlgetProcessors, ReturnValue::GET_ARRAY);
@@ -35,12 +35,12 @@
 
     /** Загрузка фильтров в соответствии с категорией
      * @param db - объект менеджера базы данных
-     * @param category - категория для фильтров
+     * @param categoryUrl - категория из url запроса
      */
-    function getFilters(DataBase $db, $category) {
-        $filterGroups = getFiltersGroups($category);
+    function getFilters(DataBase $db, $categoryUrl) {
+        $filterGroups = getFiltersGroups($db, $categoryUrl);
         for ($i = 0; $i < count($filterGroups); ++$i)
-            $filters[$filterGroups[$i]] = $db->execQuery(getFiltersQuery($filterGroups[$i]), ReturnValue::GET_ARRAY);
+            $filters[$filterGroups[$i]['characteristic']] = $db->execQuery(getFiltersQuery($filterGroups[$i]['characteristic']), ReturnValue::GET_ARRAY);
         
         return $filters;
     }
@@ -73,11 +73,20 @@
         return $data;
     }
 
-    function getFiltersGroups($category) {
-        switch($category) {
-            case "processors":
-                return ['Производитель', 'Частота ядра', 'Тип сокета', 'Техпроцесс, nm', 'Количество ядер', 'Теплопакет (TDP)'];
-        }
+
+    /** Запрос на получение названия групп фильтров
+     * @param db - менеджер базы данных
+     * @param urlCategory - название категории в url запросе
+     */
+    function getFiltersGroups(DataBase $db, $categoryUrl) {
+        $sqlFilterGroups = "    SELECT characteristic FROM `filters`
+                                JOIN characteristic ON  filters.id_characteristic=characteristic.id_characteristic
+                                WHERE filters.id_category = (SELECT id_category FROM category WHERE category.url_category='$categoryUrl')";
+        $data = $db->execQuery($sqlFilterGroups, ReturnValue::GET_ARRAY);
+        return $data;       
     }
+
+
+
 ?>
         

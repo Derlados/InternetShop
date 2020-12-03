@@ -8,7 +8,7 @@
     require_once ('scripts/php/API/GoodsApi/GoodsAction.php');
 
     class GoodApi extends Api {
-
+        
         public function createAction() { }
 
         /** GET запросы
@@ -26,7 +26,21 @@
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
                 $urlCaregory = $this->requestUri[0];
-                $goodsJson = getGoodPreview($this->db, $urlCaregory);
+                array_shift($this->requestUri);
+
+                // Взятие номера страницы 
+                $pageStr = array();
+                if (!empty($this->requestUri) && preg_match("/page=[0-9]+/", $this->requestUri[0], $pageStr) != false) {
+                    $currentPage = intval(preg_replace('/[^0-9]/', '', $pageStr[0]));      
+                }
+                else if (!empty($this->requestUri)) {
+                    return;
+                }              
+                else {
+                    $currentPage = 1;
+                }   
+
+                $goodsJson = getGoodPreview($this->db, $urlCaregory, $currentPage);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
                 if ($goodsJson == null || $category == null) {

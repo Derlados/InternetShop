@@ -1,11 +1,18 @@
+.goods_content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    margin-left: 30px;
+    width: 100%;
+}
+
 .goods_list {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    height: auto;
-    margin-left: 30px;
 }
 
 .goods_item {
@@ -69,3 +76,59 @@
     height: 40px;
     width: auto;
 }
+
+.goods_pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+}
+
+.goods_pager a {
+    display: flex;
+    justify-content: center;
+}
+
+.pages_numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+    width: auto;
+}
+
+.pages_numbers a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 35px;
+    width: 40px;
+    color: black;
+    transition: 0.5s;
+}
+
+.pages_numbers a:hover {
+    background: green;
+}
+
+.pages_numbers a span b {
+    font-size: 24px;
+    padding: 5px;
+}
+
+.pages_numbers a span b:hover {
+    color: white;
+}
+
+.pager_arrow {
+    height: 40px;
+    width: auto;
+}
+
