@@ -40,6 +40,7 @@
                     $currentPage = 1;
                 }   
 
+                // Получение товаров
                 $goodsJson = getGoodPreview($this->db, $urlCaregory, $currentPage);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
@@ -53,7 +54,8 @@
                 for ($i = 0; $i < count($goodsJson); ++$i)
                     $goodsItems[$i] = new Goods($goodsJson[$i]);
 
-                $filters = getFilters($this->db, $urlCaregory);
+                $maxPages = getMaxPages($this->db, $urlCaregory);
+                $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
                 include('templates/shop_search/shop_search_body.php');
             }
 

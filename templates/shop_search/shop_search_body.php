@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/styles/shop_search.css">
         <link rel="stylesheet" href="/styles/goods_search.css">
         <link rel="stylesheet" href="/styles/filters.css">
-        <script src="scripts/js/filters.js"></script>
+        <script src="/scripts/js/filters.js"></script>
     </head>
     <body>
         <?php include("templates/shop_main/shop_header.html")?>
@@ -30,7 +30,7 @@
                             echo '<div id="'.$filterItemId.'" class="filter_item">
                                     <div class="filter_group">
                                         <span class="filter_text"><b>'.$filterGroup.'</b></span>
-                                        <img id="'.$filterImgId.'" class="filter_img" src="Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')">
+                                        <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')">
                                     </div>';
 
                             $filterValues = $filters[$filterGroup];
@@ -54,8 +54,6 @@
                     </div>
                     <div class="goods_pager">
                         <?php
-                            $maxPages = 15;
-
                             // Создание ссылки на предыдущую страницу если она есть
                             $backPageHref = '';
                             $backPageStr = strval($currentPage - 1);

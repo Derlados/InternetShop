@@ -36,6 +36,7 @@
     /** Загрузка фильтров в соответствии с категорией
      * @param db - объект менеджера базы данных
      * @param categoryUrl - категория из url запроса
+     * @return filters - ассоциативный массив фильтров в виде (<категория фильтра> => <массив значений фильтра>)
      */
     function getFilters(DataBase $db, $categoryUrl) {
         $filterGroups = getFiltersGroups($db, $categoryUrl);
@@ -45,7 +46,7 @@
         return $filters;
     }
 
-    // Запрос на получение фильтров по названию аттрибута
+    // Создание запроса на получение фильтров по названию аттрибута
     function getFiltersQuery(string $nameAttr) {
         return "SELECT DISTINCT(components_characteristic.value) 
                 FROM `components_characteristic` 
@@ -73,7 +74,6 @@
         return $data;
     }
 
-
     /** Запрос на получение названия групп фильтров
      * @param db - менеджер базы данных
      * @param urlCategory - название категории в url запросе
@@ -86,7 +86,13 @@
         return $data;       
     }
 
-
+    function getMaxPages(DataBase $db, $categoryUrl) {
+        $sqlMaxPages = "   SELECT COUNT(*) as maxPages
+                        FROM `component` 
+                        WHERE `component`.`id_category`= (SELECT id_category FROM category WHERE category.url_category = '$categoryUrl')";
+        $data = $db->execQuery($sqlMaxPages, ReturnValue::GET_OBJECT);
+        return intval(intval($data['maxPages']) / 20 + 1);
+    }
 
 ?>
         
