@@ -1,4 +1,4 @@
-div.content_body {
+.content_body {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(500px, 2fr));
     width: 100%;
@@ -7,7 +7,7 @@ div.content_body {
     flex: 0 0 33.3333%;
 }
 
-div.block_fill {
+.block_fill {
     position: absolute;
     height: 250px;
     width: 500px;
@@ -17,7 +17,7 @@ div.block_fill {
     z-index: 100;
 }
 
-div.content_body_block {
+.content_body_block {
     display: flex;
     align-items: center;
     height: 250px;
@@ -29,18 +29,18 @@ div.content_body_block {
     border-color: rgb(211, 210, 210);
 }
 
-img.block_img {
+.block_img {
     height: 100%;
     width: auto;
 }
 
-div.block_text {
+.block_text {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-span.block_text_span b {
+.block_text_span b {
     font-size: 24px;
     font-style: bold;
 }

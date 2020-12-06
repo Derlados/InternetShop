@@ -16,6 +16,7 @@
          * internetShop/<catalog>/page=%d - загрузка страницы соответствующего каталога
          * internetShop/id=%d - загрузка полной информации о комплектующем
          * internetShop/<catalog>/filters=%d,%d... - поиск с фильтрами
+         * internetShop/json/... - запросы возвращающие данные в виде json, без отрисовки страниц
          * .../?Search=... - поиск по веденным в поисковике словам 
          */
         public function viewAction() {
@@ -23,6 +24,16 @@
             if ($this->requestUri[0] == '') {
                 $categories = getAllCategory($this->db);
                 include('templates/catalog/catalog.php');
+            }
+            else if ($this->requestUri[0] == 'json') {
+                array_shift($this->requestUri);
+
+                if (preg_match("/([a-z])+/", $this->requestUri[0]) != false && preg_match("/filters=(.*)/", $this->requestUri[1]) != false) {
+                    $filterValues = explode('=', $this->requestUri[1])[1];
+                    $filterValues = explode(',', $filterValues);
+                    $urlCaregory = $this->requestUri[0];
+                    echo getСountGoodsWithFilters($this->db, $filterValues, $urlCaregory);
+                }
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
                 $urlCaregory = $this->requestUri[0];
@@ -54,7 +65,7 @@
                 for ($i = 0; $i < count($goodsJson); ++$i)
                     $goodsItems[$i] = new Goods($goodsJson[$i]);
 
-                $maxPages = getMaxPages($this->db, $urlCaregory);
+                $maxPages = intval(getCountGoods($this->db, $urlCaregory) / 20 + 1); // Получение максимального количества страниц
                 $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
                 include('templates/shop_search/shop_search_body.php');
             }

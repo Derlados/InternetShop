@@ -112,6 +112,7 @@
     width: 40px;
     color: black;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .pages_numbers a:hover {
@@ -123,7 +124,7 @@
     padding: 5px;
 }
 
-.pages_numbers a span b:hover {
+.pages_numbers a:hover span b {
     color: white;
 }
 

@@ -36,12 +36,18 @@
                             $filterValues = $filters[$filterGroup];
                             for ($j = 0; $j < count($filterValues); ++$j) {
                                 $filterValue = $filterValues[$j]['value'];
+                                $filterIdValue = $filterValues[$j]['id_value'];
+                                $countGoods = $filterValues[$j]['count'];
                                 include("templates/shop_search/filter_value.php");
                             }
 
                             echo '</div>';
                         }    
                     ?>
+                    <div id="filter_finded" class="filter_finded">
+                        <span id="filter_finded_text">Найдено 50</span>
+                        <a onclick="showWithFilters()">Показать</a>
+                    </div>
                 </div>
                 <div class="goods_content">
                     <div class="goods_list">

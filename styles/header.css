@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-div.header {
+.header {
     display: flex;
     height: 90px;
     width: 100%;
@@ -22,13 +22,13 @@ div.header {
     outline: 2px solid rgba(224, 224, 224, 0.507);
 }
 
-div.logo {
+.logo {
     float: left;
     height: 50px;
     width: 300px;
 }
 
-div.search {
+.search {
     display: flex;
     justify-content: center;
     height: 50px;
@@ -37,13 +37,13 @@ div.search {
     margin-left: 50px;
 }
 
-div.buttons {
+.buttons {
     float: right;
     height: 50px;
     min-width: 300px;
 }
 
-button.bt_select_category {
+.bt_select_category {
     float: left;
     border-radius: 0;
     border: none;
@@ -52,7 +52,7 @@ button.bt_select_category {
     outline: none;
 }
 
-button.bt_search_action {
+.bt_search_action {
     float: left;
     border-radius: 0;
     height: 50px;
@@ -62,7 +62,7 @@ button.bt_search_action {
     background-color: #04af00;
 }
 
-input.in_search_text {
+.in_search_text {
     float: left;
     height: 50px;
     margin: 0px;
@@ -73,7 +73,7 @@ input.in_search_text {
     border: 1px solid rgb(224, 224, 224);
 }
 
-img.img_button {
+.img_button {
     float: left;
     margin-left: 20px;
     height: 50px;

@@ -4,20 +4,20 @@
     padding-top: 20px;
 }
 
-ul.route_list li {
+.route_list li {
     display:inline-block;
 }
 
-ul.route_list li::after{
+.route_list li::after{
     content: "  >";
     white-space: pre;
 }
 
-ul.route_list li:last-child::after{
+.route_list li:last-child::after{
     content: "";
 }
 
-h1.component_title {
+.component_title {
     font-size: 200%;
     margin-top: 30px;
 }
