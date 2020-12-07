@@ -48,7 +48,7 @@
                                 $countGoods = $filterValues[$j]['count'];
 
                                 $checked = '';
-                                if (in_array($filterIdValue, $receivedFilters))
+                                if ($receivedFilters != null && in_array($filterIdValue, $receivedFilters))
                                     $checked = "checked";
 
                                 include("templates/shop_search/filter_value.php");
