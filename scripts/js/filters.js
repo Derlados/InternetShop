@@ -1,3 +1,7 @@
+/** Раскрывает и скрывает чекбокс список фильтров
+ * @param idItem - id контейнера в котором находится список фильтров 
+ * @param idImg - id изображения (стрелочки) для изменения вида
+ */
 function hideCheckbox(idItem, idImg) {
     let filter_item = document.getElementById(idItem);
     let filter_img = document.getElementById(idImg);
@@ -15,35 +19,53 @@ function hideCheckbox(idItem, idImg) {
             else 
                 checkboxes[i].style.display = 'none'
         }
+
+    hideFilterFinded();
 }
 
-let filters = new Map()
+let filters = new Map() // Мапа в которой сохраняются все выборы пользователя 
+
+/** Запоминание изменения в фильтрах после соответствующих действий пользователя
+ * @param element - html элемент выбранного чекбокса 
+ */
 function checkedFilter(element) {
     showFilterFinded(element)
     let filterValue = element.getAttribute('value');
-    let filterGroup = element.parentElement.parentElement.getAttribute('id');
+    let filterGroupId = element.parentElement.parentElement.getAttribute('id');
 
     if (element.checked)
-        addToMap(filterGroup, filterValue)
+        addToMap(filterGroupId, filterValue)
     else
-        deleteFromMap(filterGroup, filterValue)
+        deleteFromMap(filterGroupId, filterValue)
 
     ajaxUpdateFinded();
 }
 
-// Показывает подсказку о том сколько найдено продуктов по фильтрам и "показать"
-function showFilterFinded(element, number) {
+/** Показывает подсказку о том сколько найдено продуктов по фильтрам и "показать"
+ *  @param element - чекер марка на которую нажали, нужна для того чтобы на её высоти отобразить подсказку
+ * */ 
+function showFilterFinded(element) {
     let filterFinded = document.getElementById('filter_finded');
     filterFinded.style.visibility = 'visible';
     filterFinded.style.top =  element.offsetTop + 'px';
     filterFinded.style.left = element.offsetLeft + 100 + 'px';
 }
 
-function showWithFilters() {
-   // document.location = getHref(true);
-   
+/** Скрытие подсказки о найденных товарах
+ */
+function hideFilterFinded() {
+    let filterFinded = document.getElementById('filter_finded');
+    filterFinded.style.visibility = 'hidden';
 }
 
+/** Отображение страницы с выбранными фильтрами
+ */
+function showWithFilters() {
+    document.location = getHref(false);
+}
+
+/** AJAX звпрос который считает количество найденных товаров в соответствии с фильтрами
+ */
 function ajaxUpdateFinded() {
     const request = new XMLHttpRequest();
     const url = getHref(true);
@@ -57,11 +79,14 @@ function ajaxUpdateFinded() {
     request.send();
 }
 
-function getHref(typeJson) {
+/** Создание href в соответствии с выбранными фильтрами
+ * @param isJson - булевская переменная, true - запрос с типо возвращаемого значения (json), false - обычный переход на страницу
+ */
+function getHref(isJson) {
     let arrayOfStrings = (document.location.toString()).split("page", 1)
-    arrayOfStrings = (arrayOfStrings[0]).split('/');
+    arrayOfStrings = (arrayOfStrings[0]).split('/')
 
-    if (typeJson === true)
+    if (isJson === true)
         href = 'http://'+ arrayOfStrings[2] +'/json/' + arrayOfStrings[3] + '/filters=' + filters.size
     else
         href = 'http://'+ arrayOfStrings[2] +'/' + arrayOfStrings[3] + '/filters=' + filters.size
@@ -70,11 +95,14 @@ function getHref(typeJson) {
         for (let i = 0; i < arrValue.length; i++)
             href += ',' + arrValue[i]
     }
-    console.log(href);
-    return href;
+
+    return href
 }
 
-// Добавление новых значений в мап, если группы филтров в мапе нету - создается новая группа
+/** Добавление новых значений в мап, если группы филтров в мапе нету - создается новая группа
+ *  @param filter - группа фильтров в которой был сделан выбор
+ *  @param value - значение выбранного фильтра (id) 
+ *  */ 
 function addToMap(filter, value) {
     if (!filters.has(filter))
         filters.set(filter, new Array())
@@ -83,7 +111,10 @@ function addToMap(filter, value) {
     arrValue.push(value);
 }
 
-// Удаление элемента из мапа фаильтров, если удаляется последний элемент в группе - удаляется группа в мапе
+/** Удаление элемента из мапа фаильтров, если удаляется последний элемент в группе - удаляется группа в мапе
+ *  @param filter - группа фильтров в которой был сделан выбор
+ *  @param value - значение выбранного фильтра (id) 
+ * */ 
 function deleteFromMap(filter, value) {
     let arrValue = filters.get(filter);
     for (let i = 0; i < arrValue.length; ++i) {
@@ -95,4 +126,30 @@ function deleteFromMap(filter, value) {
 
     if (arrValue.length == 0) 
         filters.delete(filter)
+}
+
+/** Восстановление все значений фильтров в filters
+ */
+function restoreFilters() {
+    let filterValues = ((document.location.toString()).match(/filters(=[0-9]+)((,[0-9]+)+)/))[0];
+    filterValues = filterValues.replace('filters=', '').split(',');
+
+    htmlFilters = document.getElementById("filters");
+    htmlFilterGroups = htmlFilters.children
+    
+    for (i = 0; i < htmlFilterGroups.length - 1; ++i) {
+        htmlFilterList = htmlFilterGroups[i].children
+        filterGroupId = htmlFilterGroups[i].getAttribute('id');
+
+        for (j = 0; j < htmlFilterList.length; ++j) {
+            htmlFilterValue = htmlFilterList[j].children[0];
+            let filterValue = htmlFilterValue.getAttribute('value');
+            console.log(filterValue);
+
+            if (htmlFilterValue.checked) 
+                addToMap(filterGroupId, filterValue)
+        }
+    }
+
+    console.log(filters);
 }

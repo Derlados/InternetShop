@@ -5,10 +5,11 @@
     <div class="pages_numbers">
         <?php
             $pagerValues = getPagesArray($currentPage, $maxPages); // Получение массива значений для pager-а
+
             for ($i = 0; $i < count($pagerValues); ++$i) {
                 // Если элемент это "..." ссылка не создается
                 if ($pagerValues[$i] != "...")
-                    $href = 'href="http://'.API::$MAIN_DOMAIN.'/'.$urlCaregory.'/page='.$pagerValues[$i].'"';
+                    $href = str_replace('{page}', $pagerValues[$i], $hrefTemplate);
                 else
                     $href = '';   
                 
@@ -59,7 +60,7 @@
             }
         ?>
     </div>
-    <a <?php echo $nexrPageHref?>>
+    <a <?php echo $nextPageHref?>>
         <img class="pager_arrow" src="/Images/Site/pager_arrow_next.png">
     </a>
 </div>

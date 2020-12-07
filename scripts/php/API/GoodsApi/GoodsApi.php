@@ -29,10 +29,10 @@
                 array_shift($this->requestUri);
 
                 if (preg_match("/([a-z])+/", $this->requestUri[0]) != false && preg_match("/filters=(.*)/", $this->requestUri[1]) != false) {
-                    $filterValues = explode('=', $this->requestUri[1])[1];
-                    $filterValues = explode(',', $filterValues);
+                    $receivedFilters = explode('=', $this->requestUri[1])[1];
+                    $receivedFilters = explode(',', $receivedFilters);
                     $urlCaregory = $this->requestUri[0];
-                    echo getСountGoodsWithFilters($this->db, $filterValues, $urlCaregory);
+                    echo  getCountGoods($this->db, $urlCaregory, $receivedFilters);
                 }
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
@@ -40,9 +40,20 @@
                 array_shift($this->requestUri);
 
                 // Взятие номера страницы 
-                $pageStr = array();
-                if (!empty($this->requestUri) && preg_match("/page=[0-9]+/", $this->requestUri[0], $pageStr) != false) {
-                    $currentPage = intval(preg_replace('/[^0-9]/', '', $pageStr[0]));      
+                $matches = array();
+                $receivedFilters = null;
+                $currentPage = 1;
+
+                if (!empty($this->requestUri)) {
+                    //Извлечение фильтров
+                    if (preg_match("/filters(=[0-9]+)((,[0-9]+)+)/", $this->requestUri[0], $matches) != false) {
+                        $receivedFilters = str_replace('filters=', '', $matches[0]);    
+                        $receivedFilters = explode(',', $receivedFilters);
+                    }
+
+                    // Извлечение текущей страницы
+                    if (preg_match("/(.*)page=[0-9]+/", $this->requestUri[0], $matches) != false) 
+                        $currentPage = intval(preg_replace('/(.*)page=/', '', $matches[0]));           
                 }
                 else if (!empty($this->requestUri)) {
                     return;
@@ -52,7 +63,7 @@
                 }   
 
                 // Получение товаров
-                $goodsJson = getGoodPreview($this->db, $urlCaregory, $currentPage);
+                $goodsJson = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
                 if ($goodsJson == null || $category == null) {
@@ -65,8 +76,9 @@
                 for ($i = 0; $i < count($goodsJson); ++$i)
                     $goodsItems[$i] = new Goods($goodsJson[$i]);
 
-                $maxPages = intval(getCountGoods($this->db, $urlCaregory) / 20 + 1); // Получение максимального количества страниц
+                $maxPages = intval(getCountGoods($this->db, $urlCaregory, $receivedFilters) / 20 + 1); // Получение максимального количества страниц
                 $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
+
                 include('templates/shop_search/shop_search_body.php');
             }
 
