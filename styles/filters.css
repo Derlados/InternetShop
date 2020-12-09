@@ -26,55 +26,6 @@
     cursor: pointer;
 }
 
-.checkbox {
-    display: none;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 14px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.checkmark_text {
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-.checkmark {
-    height: 24px;
-    width: 24px;
-    background-color: rgb(216, 216, 216);
-}
-
-.checkbox:hover input ~ .checkmark {
-    background-color: rgb(184, 182, 182);
-}
-  
-.checkbox input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-.checkmark:after {
-    color: white;
-    text-align: center;
-    content: "✔";
-    display: none;
-}
-  
-.checkbox input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 24px;
-  width: 24px;
-}
-
 .filter_finded {
     display: flex;
     justify-content: center;
@@ -95,7 +46,6 @@
 .filter_finded span {
     font-size: 12px;
 }
-
 
 .filter_finded a {
     font-size: 12px;

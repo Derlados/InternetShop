@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/styles/shop_search.css">
         <link rel="stylesheet" href="/styles/goods_search.css">
         <link rel="stylesheet" href="/styles/filters.css">
+        <link rel="stylesheet" href="/styles/checkbox_filter.css">
         <script src="/scripts/js/filters.js"></script>
     </head>
     <body onload="restoreFilters()">
@@ -34,6 +35,7 @@
                                     </div>';
 
                             createFilterList($filters[$filterGroup], $receivedFilters);
+
                             echo '</div>';
                         }    
 
@@ -71,8 +73,8 @@
                     </div>
                     <div class="goods_pager">
                         <?php
-                            $pageUri = explode('page', $_SERVER['REQUEST_URI'])[0];
-                            $pageUri = explode(';', $pageUri)[0];
+                            $pageUri = explode('/page', $_SERVER['REQUEST_URI'])[0];
+                            $pageUri = explode(';page', $pageUri)[0];
 
                             if ($receivedFilters != null)
                                 $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . ';page={page}"';

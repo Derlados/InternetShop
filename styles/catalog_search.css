@@ -3,6 +3,7 @@
     grid-template-columns: repeat(auto-fill,minmax(500px, 2fr));
     width: 100%;
 }
+
 .content_body>* {
     flex: 0 0 33.3333%;
 }

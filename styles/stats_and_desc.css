@@ -1,0 +1,62 @@
+.stats_and_desc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stats_and_desc .block {
+    display: block;
+    padding: 20px;
+    width: 750px;
+    height: max-content;
+    outline-offset: -2px;
+    outline: solid 2px rgb(206, 206, 206);
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.desc p {
+    height: 190px;
+    overflow: hidden;
+}
+
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.stats_list {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 190px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 1s;
+}
+
+.stats_list div { 
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.stats_list div span:first-child{ 
+    min-width: 300px;
+    margin-right: 30px;
+}
+
+.hide_bt {
+    margin-top: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(111, 160, 219);
+}

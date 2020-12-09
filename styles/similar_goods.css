@@ -1,0 +1,98 @@
+.similar_goods {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 100%;
+    overflow: hidden;
+}
+
+.similar_goods_text {
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+.similar_goods_text b {
+    font-size: 24px;
+}
+
+.similar_list_goods {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+}
+
+.slide_bt {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.slide_bt img {
+    height: 40px;
+    width: auto;
+    cursor: pointer;
+}
+
+.goods_slider_holder {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.goods_slider {
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    overflow-x: hidden;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.goods_slider li {
+    outline-offset: -2px;
+    outline: solid 2px rgb(206, 206, 206);
+    height: max-content;
+    flex-basis: 10%;
+    position: relative;
+}
+
+.goods_slider .similar_goods_item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    width: 250px;
+    padding: 20px;
+}
+
+.goods_slider .similar_goods_item .goods_img {
+    width: 200px;
+    height: auto;
+}
+
+.goods_slider .similar_goods_item .goods_name {
+    margin-top: 20px;
+}
+
+.price_and_bts {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.price_and_bts img {
+    height: 24px;
+    width: auto;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.price_and_bts span b {
+    font-size: 20px;
+    cursor: default;
+}
