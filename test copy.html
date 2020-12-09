@@ -103,64 +103,68 @@
                     <div class="block">
                         <div class="stats">
                             <span style="margin-bottom: 20px;"><b style=" font-size: 32px;">Характеристики</b></span>
-                            <div class="stats_list" id="stats_list">
-                                <div>
-                                    <span>Семейство процессора</span>
-                                    <span>AMD Ryzen 5</span>
-                                </div>
-                                <div>
-                                    <span>Тип сокета</span>
-                                    <span>AM4</span>
-                                </div>
-                                <div>
-                                    <span>Количество ядер</span>
-                                    <span>6 ядер</span>
-                                </div>
-                                 <div>
-                                    <span>Количество потоков</span>
-                                    <span>12 потоков</span>
-                                </div>
-                                <div>
-                                    <span>Тактовая частота ядра, ГГц</span>
-                                    <span>3.4</span>
-                                </div>
-                                <div>
-                                    <span>Частота ядра в Boost режиме, ГГц</span>
-                                    <span>3.9</span>
-                                </div>
-                                <div>
-                                    <span>Графическое ядро</span>
-                                    <span>нет</span>
-                                </div>
-                                <div>
-                                    <span>Объем кеш-памяти 2-го уровня</span>
-                                    <span>3MB</span>
-                                </div>
-                                <div>
-                                    <span>Объем кеш-памяти 3-го уровня</span>
-                                    <span>L3: 16MB</span>
-                                </div>
-                                <div>
-                                    <span>Теплопакет (TDP)</span>
-                                    <span>65W</span>
-                                </div>
-                                <div>
-                                    <span>Микроархитектура</span>
-                                    <span>Zen+</span>
-                                </div>
-                                <div>
-                                    <span>Тип поставки</span>
-                                    <span>Box (Wraith Stealth cooler)</span>
+                            <div class="stats_list_holder" id="stats_list_holder">
+                                <div class="stats_list" id="stats_list">
+                                    <div>
+                                        <span>Семейство процессора</span>
+                                        <span>AMD Ryzen 5</span>
+                                    </div>
+                                    <div>
+                                        <span>Тип сокета</span>
+                                        <span>AM4</span>
+                                    </div>
+                                    <div>
+                                        <span>Количество ядер</span>
+                                        <span>6 ядер</span>
+                                    </div>
+                                     <div>
+                                        <span>Количество потоков</span>
+                                        <span>12 потоков</span>
+                                    </div>
+                                    <div>
+                                        <span>Тактовая частота ядра, ГГц</span>
+                                        <span>3.4</span>
+                                    </div>
+                                    <div>
+                                        <span>Частота ядра в Boost режиме, ГГц</span>
+                                        <span>3.9</span>
+                                    </div>
+                                    <div>
+                                        <span>Графическое ядро</span>
+                                        <span>нет</span>
+                                    </div>
+                                    <div>
+                                        <span>Объем кеш-памяти 2-го уровня</span>
+                                        <span>3MB</span>
+                                    </div>
+                                    <div>
+                                        <span>Объем кеш-памяти 3-го уровня</span>
+                                        <span>L3: 16MB</span>
+                                    </div>
+                                    <div>
+                                        <span>Теплопакет (TDP)</span>
+                                        <span>65W</span>
+                                    </div>
+                                    <div>
+                                        <span>Микроархитектура</span>
+                                        <span>Zen+</span>
+                                    </div>
+                                    <div>
+                                        <span>Тип поставки</span>
+                                        <span>Box (Wraith Stealth cooler)</span>
+                                    </div>
                                 </div>
                             </div>
-                            <span class="hide_bt" onclick="resize_bllock('stats_list')">Скрыть</span>
+                            <span class="hide_bt" onclick="resize_bllock('stats_list_holder')">Скрыть</span>
                         </div>
                     </div>
                     <div class="block" style="margin-left: 30px;">
                         <div class="desc">
                             <span style="margin-bottom: 20px;"><b style=" font-size: 32px;">Описание</b></span>
-                            <p id="desc"><b>Особенности микроархитектуры Zen</b><br>В новой архитектуре AMD Zen используется мощный механизм исполнения, а также поддерживается функция одновременной многопоточности (SMT). Ядра Zen разработаны для эффективного использования имеющихся ресурсов микроархитектуры для обеспечения максимальной вычислительной производительности. Новая трехуровневая кэш-память с низкой задержкой и новые алгоритмы предварительной выборки значительно уменьшают количество кэш-промахов и увеличивают пропускную способность по сравнению с предыдущей микроархитектурой.<br><br><b>Производительность и эффективность для приложений следующего поколения</b><br>Облачные вычисления, производительность промышленного уровня, технологии виртуальной реальности, игры и безопасность данных открывают новые горизонты и требуют более высокого уровня производительности вычислений при максимальной энергоэффективности. Изначально инженеры компании AMD разработали новую архитектуру Zen таким образом, чтобы она могла соответствовать и даже превосходить высокие требования, касающиеся производительности и эффективности, не только приложений следующего, но и дальнейших поколений.<br><br><b>Технология Neural Net Prediction</b><br>Встроенный искусственный интеллект позволяет процессору эффективнее справляться с выполнением ваших приложений.<br><br><b>Технология Smart Prefetch</b><br>Алгоритмы обучения, которые заранее предугадывают и предзагружают в кэш-память необходимые ПО данные для ускорения вычислений и минимизации времени отклика.<br><br><b>Технология Extended Frequency Range</b><br>Автоматическое дополнительное повышение производительности для пользователей игровых ПК с системами охлаждения премиум-класса.<br><br><b>Технология Precision Boost</b><br>Производительность процессора регулируется в режиме реального времени для соответствия требованиям нагрузки ваших игр и приложений.<br><br><b>Технология Pure Power</b><br>Работа процессора без излишнего тепловыделения обеспечивается с помощью искусственного интеллекта, встроенных датчиков и оптимизированного дизайна микросхемы.</p>
-                            <span class="hide_bt" onclick="resize_bllock('desc')">Скрыть</span>
+                            <div class="desc_holder" id="desc_holder">
+                                <p id="desc"><b>Особенности микроархитектуры Zen</b><br>В новой архитектуре AMD Zen используется мощный механизм исполнения, а также поддерживается функция одновременной многопоточности (SMT). Ядра Zen разработаны для эффективного использования имеющихся ресурсов микроархитектуры для обеспечения максимальной вычислительной производительности. Новая трехуровневая кэш-память с низкой задержкой и новые алгоритмы предварительной выборки значительно уменьшают количество кэш-промахов и увеличивают пропускную способность по сравнению с предыдущей микроархитектурой.<br><br><b>Производительность и эффективность для приложений следующего поколения</b><br>Облачные вычисления, производительность промышленного уровня, технологии виртуальной реальности, игры и безопасность данных открывают новые горизонты и требуют более высокого уровня производительности вычислений при максимальной энергоэффективности. Изначально инженеры компании AMD разработали новую архитектуру Zen таким образом, чтобы она могла соответствовать и даже превосходить высокие требования, касающиеся производительности и эффективности, не только приложений следующего, но и дальнейших поколений.<br><br><b>Технология Neural Net Prediction</b><br>Встроенный искусственный интеллект позволяет процессору эффективнее справляться с выполнением ваших приложений.<br><br><b>Технология Smart Prefetch</b><br>Алгоритмы обучения, которые заранее предугадывают и предзагружают в кэш-память необходимые ПО данные для ускорения вычислений и минимизации времени отклика.<br><br><b>Технология Extended Frequency Range</b><br>Автоматическое дополнительное повышение производительности для пользователей игровых ПК с системами охлаждения премиум-класса.<br><br><b>Технология Precision Boost</b><br>Производительность процессора регулируется в режиме реального времени для соответствия требованиям нагрузки ваших игр и приложений.<br><br><b>Технология Pure Power</b><br>Работа процессора без излишнего тепловыделения обеспечивается с помощью искусственного интеллекта, встроенных датчиков и оптимизированного дизайна микросхемы.</p>
+                            </div>
+                            <span class="hide_bt" onclick="resize_bllock('desc_holder')">Скрыть</span>
                         </div>
                     </div>
                 </div>
@@ -168,7 +172,7 @@
                     <span class="similar_goods_text"><b>Похожие товары</b></span>
                     <div class="similar_list_goods">
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_left.png">
+                            <img src="Images/Site/slide_arrow_left.png" onclick="scrollGoods(1)">
                         </div>
                         <div class="goods_slider_holder" id="goods_slider_holder">
                             <ul class="goods_slider" id="goods_slider">
@@ -196,7 +200,7 @@
                                 </li>
                                 <li class="similar_goods_item">
                                     <a href="google.com">
-                                        <img class="goods_img" src="images/PC_component/processors/U0148480.png">
+                                        <img class="goods_img" src="images/PC_component/processors/U0365037.png">
                                         <span class="goods_name">Процессор Intel Core i3-2120 3.3GHz/5GT/s/3MB</span>
                                     </a>
                                     <div class="price_and_bts">
@@ -207,7 +211,7 @@
                                 </li>
                                 <li class="similar_goods_item">
                                     <a href="google.com">
-                                        <img class="goods_img" src="images/PC_component/processors/U0148480.png">
+                                        <img class="goods_img" src="images/PC_component/processors/U0226070.png">
                                         <span class="goods_name">Процессор Intel Core i3-2120 3.3GHz/5GT/s/3MB</span>
                                     </a>
                                     <div class="price_and_bts">
@@ -218,7 +222,7 @@
                                 </li>
                                 <li class="similar_goods_item">
                                     <a href="google.com">
-                                        <img class="goods_img" src="images/PC_component/processors/U0148480.png">
+                                        <img class="goods_img" src="images/PC_component/processors/U0232832.png">
                                         <span class="goods_name">Процессор Intel Core i3-2120 3.3GHz/5GT/s/3MB</span>
                                     </a>
                                     <div class="price_and_bts">
@@ -229,7 +233,7 @@
                                 </li>
                                 <li class="similar_goods_item">
                                     <a href="google.com">
-                                        <img class="goods_img" src="images/PC_component/processors/U0148480.png">
+                                        <img class="goods_img" src="images/PC_component/processors/U0283108.png">
                                         <span class="goods_name">Процессор Intel Core i3-2120 3.3GHz/5GT/s/3MB</span>
                                     </a>
                                     <div class="price_and_bts">
@@ -240,7 +244,7 @@
                                 </li>
                                 <li class="similar_goods_item">
                                     <a href="google.com">
-                                        <img class="goods_img" src="images/PC_component/processors/U0148480.png">
+                                        <img class="goods_img" src="images/PC_component/processors/U0322468.png">
                                         <span class="goods_name">Процессор Intel Core i3-2120 3.3GHz/5GT/s/3MB</span>
                                     </a>
                                     <div class="price_and_bts">
@@ -252,7 +256,7 @@
                             </ul>
                         </div>
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_right.png" onclick="scrollGoods()">
+                            <img src="Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1)">
                         </div>
                     </div>
                 </div>

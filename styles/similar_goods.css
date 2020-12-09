@@ -59,6 +59,7 @@
     height: max-content;
     flex-basis: 10%;
     position: relative;
+    transition: 500ms;
 }
 
 .goods_slider .similar_goods_item a {
