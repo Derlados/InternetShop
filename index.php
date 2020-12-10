@@ -3,7 +3,7 @@
     require_once ('scripts/php/API/Api.php');
 
     
-    $str =$_SERVER['REQUEST_URI'];
+    $str = $_SERVER['REQUEST_URI'];
 
 
     // Возникла сложность с GET запросами, их параметрі передаются вместе с адресной строкой,

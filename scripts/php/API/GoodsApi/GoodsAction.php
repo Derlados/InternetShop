@@ -32,14 +32,34 @@
         return $data;
     }
 
-    // Загрузка полной информации комплектующего по id
-    function getGoodFullData(DataBase $db, int $id) {
-        $sqlFullData = "SELECT characteristic.characteristic, components_characteristic.value 
-                        FROM `components_characteristic` 
-                        INNER JOIN characteristic ON characteristic.id_characteristic = components_characteristic.id_characteristic 
-                        WHERE `components_characteristic`.`id_component` = '$id'";
+    /** Запрос на получение всех характеристик о комплектующем по id
+     * @param db - экземпляр базы данных
+     * @param idGoods - id комплектующего
+     */
+    function getFullCharacteristic(DataBase $db, $idGoods) {
+        $sqlGetFullCharacteristic = "   SELECT `attribute_value`.`id_value`, `characteristic`.`characteristic`, `attribute_value`.`value` FROM `components_characteristic`
+                                        JOIN `characteristic` ON `characteristic`.`id_characteristic` = `components_characteristic`.`id_characteristic`
+                                        JOIN `attribute_value` ON `attribute_value`.`id_value` = `components_characteristic`.`id_value`
+                                        WHERE `components_characteristic`.`id_component` = $idGoods";
+        $data = $db->execQuery($sqlGetFullCharacteristic, ReturnValue::GET_ARRAY);
+        return $data;
+    }
 
-        $data = $db->execQuery($sqlFullData, ReturnValue::GET_ARRAY);
+    /** Запрос на получение информации о самом комплектующем по id
+     * @param db - экземпляр базы данных
+     * @param idGoods - id комплектующего
+     */
+    function getGoodInfoByid(DataBase $db, $idGoods) {
+        $sqlGetGood = " SELECT * FROM `component` 
+                        WHERE `id_component`= $idGoods";
+        $data = $db->execQuery($sqlGetGood, ReturnValue::GET_OBJECT);
+
+        $idDesc = $data['id_description'];
+        $sqlGetDesc = " SELECT `description`.`description` FROM `description` 
+                        WHERE `description`.`id_description`= $idDesc";
+        $desc = $db->execQuery($sqlGetDesc, ReturnValue::GET_OBJECT);
+
+        $data['description'] = $desc['description'];
         return $data;
     }
 
@@ -80,8 +100,19 @@
      * @param urlCategory - название категории в url запросе
      */
     function getNameCategory(DataBase $db, string $urlCategory) {
-        $sqlNameCategory = "    SELECT category.category FROM category 
+        $sqlNameCategory = "    SELECT category.category, category.url_category FROM category 
                                 WHERE category.url_category='$urlCategory'";
+        $data = $db->execQuery($sqlNameCategory, ReturnValue::GET_OBJECT);
+        return $data;
+    }
+
+    /** Запрос на получение информации о категории
+     * @param db - менеджер базы данных
+     * @param urlCategory - название категории в url запросе
+     */
+    function getCategoryInfo(DataBase $db, string $idCategory) {
+        $sqlNameCategory = "    SELECT category.category, category.url_category FROM category 
+                                WHERE category.id_category='$idCategory'";
         $data = $db->execQuery($sqlNameCategory, ReturnValue::GET_OBJECT);
         return $data;
     }
@@ -136,6 +167,24 @@
                         HAVING COUNT(*)  = $countAttr";
 
         return $sqlFilters;
+    }
+
+    function getSimilarGoods(DataBase $db, Goods $good, $urlCategory) {
+        // Получение аттрибутов для поиска похожих товаров
+        $sqlGetSimilarAttribute = " SELECT `characteristic`.`characteristic` FROM `filters` 
+                                    JOIN `characteristic` ON `characteristic`.`id_characteristic` = `filters`.`id_characteristic` 
+                                    WHERE `as_similar`= 1";
+        $similarAttr = $db->execQuery($sqlGetSimilarAttribute, ReturnValue::GET_ARRAY);
+        
+        // Поиск похожих товаров производится по фильтрам
+        $filters[0] = count($similarAttr);
+        for ($i = 0; $i < count($similarAttr); ++$i) {
+            $attribute = $similarAttr[$i]['characteristic'];
+            $filters[$i + 1] = $good->findCharacteristicByName($attribute)['id_value'];
+        }
+
+        $data = getGoodPreview($db, $urlCategory, 1, $filters); // Получение самих комплектующих
+        return $data;
     }
 ?>
         

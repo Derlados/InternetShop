@@ -78,6 +78,8 @@
 
 .goods_slider .similar_goods_item .goods_name {
     margin-top: 20px;
+    max-height: 36px;
+    overflow: hidden;
 }
 
 .price_and_bts {

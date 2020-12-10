@@ -35,6 +35,23 @@
                     echo  getCountGoods($this->db, $urlCaregory, $receivedFilters);
                 }
             }
+            else if (preg_match("/id=([0-9])+/", $this->requestUri[0]) != false) {
+                $idGoods = str_replace('id=', '', $this->requestUri[0]);
+
+                $good = new Goods(getGoodInfoByid($this->db, $idGoods));
+                $good ->characteristics = getFullCharacteristic($this->db, $idGoods);
+                
+                $categoryInfo = getCategoryInfo($this->db, $good->id_category);
+                $categoryName = $categoryInfo['category'];
+                $categoryUrl = $categoryInfo['url_category'];
+
+                $similarGoodsData = getSimilarGoods($this->db, $good, $categoryUrl);
+                $similarGoods = array();
+                for ($i = 0; $i < count($similarGoodsData); ++$i)
+                    $similarGoods[$i] = new Goods($similarGoodsData[$i]);
+
+                include('templates/goods_info/goods_info_body.php');
+            }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {
                 $urlCaregory = $this->requestUri[0];
                 array_shift($this->requestUri);
@@ -52,8 +69,9 @@
                     }
 
                     // Извлечение текущей страницы
-                    if (preg_match("/(.*)page=[0-9]+/", $this->requestUri[0], $matches) != false) 
+                    if (preg_match("/(.*)page=[0-9]+/", $this->requestUri[0], $matches) != false){
                         $currentPage = intval(preg_replace('/(.*)page=/', '', $matches[0]));           
+                    }
                 }
                 else if (!empty($this->requestUri)) {
                     return;
@@ -61,20 +79,20 @@
                 else {
                     $currentPage = 1;
                 }   
-
+                
                 // Получение товаров
-                $goodsJson = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters);
+                $goodsData = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
-                if ($goodsJson == null || $category == null) {
-                   //TODO
+                //TODO
+                if ($goodsData == null || $category == null) {
                    return;
                 }
 
                 // Десериализация всех товаров
                 $goodsItems = array();
-                for ($i = 0; $i < count($goodsJson); ++$i)
-                    $goodsItems[$i] = new Goods($goodsJson[$i]);
+                for ($i = 0; $i < count($goodsData); ++$i)
+                    $goodsItems[$i] = new Goods($goodsData[$i]);
 
                 $maxPages = intval(getCountGoods($this->db, $urlCaregory, $receivedFilters) / 20 + 1); // Получение максимального количества страниц
                 $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
