@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="styles/similar_goods.css">
         <script src="scripts/js/goods_info/resize_blocks.js"></script>
         <script src="scripts/js/goods_info/slider_goods.js"></script>
+        <script src="scripts/js/goods_info/head_info_func.js"></script>
     </head>
     <body onresize="resize()" onload="init()" style="max-width: 1980px;">
         <div class="header">
@@ -66,14 +67,14 @@
                         </div>
                         <div class="warranty">
                             <div class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" id="checkmark_warranty" onclick="checkedWarranty(this)">
                                 <span class="checkmark"></span>
                                 <span class="checkmark_text">Продление гарантии</span>
                             </div>
-                            <ul class="warranty_years">
+                            <ul class="warranty_years" id="warranty_year">
                                 <li>
                                     <label class="warranty_bt">
-                                        <input type="radio" name="radio">
+                                        <input type="radio" name="radio" onclick="checkedRadioWarranty(this)">
                                         <span class="radio_bt"></span>
                                         <span class="radio_bt_text">Продление гарантии на 1 год </span>
                                         <span style="font-size: 20px; color: gray">299 грн</span>
@@ -81,7 +82,7 @@
                                 </li>
                                 <li>
                                     <label class="warranty_bt">
-                                        <input type="radio" name="radio">
+                                        <input type="radio" name="radio" onclick="checkedRadioWarranty(this)">
                                         <span class="radio_bt"></span>
                                         <span class="radio_bt_text">Продление гарантии на 2 года </span>
                                         <span style="font-size: 20px; color: gray">599 грн</span>
@@ -89,7 +90,7 @@
                                 </li>
                                 <li>
                                     <label class="warranty_bt">
-                                        <input type="radio" name="radio">
+                                        <input type="radio" name="radio" onclick="checkedRadioWarranty(this)">
                                         <span class="radio_bt"></span>
                                         <span class="radio_bt_text">Продление гарантии на 3 года </span>
                                         <span style="font-size: 20px; color: gray">899 грн</span>
@@ -172,7 +173,7 @@
                     <span class="similar_goods_text"><b>Похожие товары</b></span>
                     <div class="similar_list_goods">
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_left.png" onclick="scrollGoods(1)">
+                            <img src="Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
                         </div>
                         <div class="goods_slider_holder" id="goods_slider_holder">
                             <ul class="goods_slider" id="goods_slider">
@@ -256,7 +257,7 @@
                             </ul>
                         </div>
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1)">
+                            <img src="Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
                         </div>
                     </div>
                 </div>

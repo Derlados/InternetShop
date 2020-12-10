@@ -1,6 +1,5 @@
 const WIDTH_SLIDER_ITEM = 250 // Длинна одного товара
 let currentMaxitems = 0 // Текущее максимальное количество товаров которые помещаются
-let lastDirection = 1 // TODO
 
 /** Инициализация объектов при загрузке страницы
  */
@@ -15,9 +14,10 @@ function init() {
 /** Изменение слайдера при изменении размера окна
  */
 function resize() {
-    // TODO
-    if (checkCurMaxItems() === true)
-        scrollGoods(lastDirection)   
+    let modifyValue = checkCurMaxItems() 
+    console.log(modifyValue)
+    if (modifyValue !== 0)
+        scrollGoods(modifyValue, 1)
 
     let goodsSlider = document.getElementById("goods_slider")
     goodsSlider.style.width = currentMaxitems * WIDTH_SLIDER_ITEM + "px"
@@ -26,15 +26,14 @@ function resize() {
 /** Скроллинг слайдера
  * @param direction - направление скроллинга (-1 вправл, 1 - влево) 
  */
-function scrollGoods(direction) {
-    lastDirection = direction
+function scrollGoods(direction, countScroll) {
     let goodsSlider = document.getElementById("goods_slider")
     let goodsItems = goodsSlider.children
 
     // Получение значений сдвигов (максимально доступгый, текущий и предположительный следующий)
-    let maxLeftOffset = (goodsItems.length * WIDTH_SLIDER_ITEM) - currentMaxitems * WIDTH_SLIDER_ITEM
+    let maxLeftOffset = (goodsItems.length * WIDTH_SLIDER_ITEM) - countScroll * WIDTH_SLIDER_ITEM
     let currentOffset = parseInt(goodsItems[0].style.left)
-    let nextOffset = currentMaxitems * WIDTH_SLIDER_ITEM * direction + currentOffset
+    let nextOffset = countScroll * WIDTH_SLIDER_ITEM * direction + currentOffset
 
     // Корректировка чтобы не было пустых мест
     if (direction == -1 && Math.abs(nextOffset) > maxLeftOffset)
@@ -55,8 +54,12 @@ function checkCurMaxItems() {
     let width = goodsSliderHolder.offsetWidth
     let newMaxitems = Math.floor(width / WIDTH_SLIDER_ITEM);
     
-    let returnBool = !(newMaxitems === currentMaxitems)
+    let modifyValue = 0 
+    if (newMaxitems < currentMaxitems)
+        modifyValue = -1
+    else if (newMaxitems > currentMaxitems)
+        modifyValue = 1
 
     currentMaxitems = newMaxitems
-    return returnBool;
+    return modifyValue;
 }
