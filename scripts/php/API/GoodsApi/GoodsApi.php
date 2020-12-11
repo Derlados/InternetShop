@@ -32,7 +32,7 @@
                     $receivedFilters = explode('=', $this->requestUri[1])[1];
                     $receivedFilters = explode(',', $receivedFilters);
                     $urlCaregory = $this->requestUri[0];
-                    echo  getCountGoods($this->db, $urlCaregory, $receivedFilters);
+                    echo  getCountGoods($this->db, $urlCaregory, $receivedFilters, null);
                 }
             }
             else if (preg_match("/id=([0-9])+/", $this->requestUri[0]) != false) {
@@ -72,16 +72,15 @@
                     if (preg_match("/(.*)page=[0-9]+/", $this->requestUri[0], $matches) != false){
                         $currentPage = intval(preg_replace('/(.*)page=/', '', $matches[0]));           
                     }
-                }
-                else if (!empty($this->requestUri)) {
-                    return;
-                }              
+                }  
                 else {
                     $currentPage = 1;
                 }   
-                
+
+                $searchWords = $_GET['search']; // Получение слов для поиска (со строки поиска)
+
                 // Получение товаров
-                $goodsData = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters);
+                $goodsData = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters, $searchWords);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
                 //TODO
@@ -94,7 +93,7 @@
                 for ($i = 0; $i < count($goodsData); ++$i)
                     $goodsItems[$i] = new Goods($goodsData[$i]);
 
-                $maxPages = intval(getCountGoods($this->db, $urlCaregory, $receivedFilters) / 20 + 1); // Получение максимального количества страниц
+                $maxPages = intval(getCountGoods($this->db, $urlCaregory, $receivedFilters, $searchWords) / 20 + 1); // Получение максимального количества страниц
                 $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
 
                 include('templates/shop_search/shop_search_body.php');

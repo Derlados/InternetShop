@@ -11,9 +11,10 @@
         <script src="/scripts/js/goods_info/resize_blocks.js"></script>
         <script src="/scripts/js/goods_info/slider_goods.js"></script>
         <script src="/scripts/js/goods_info/head_info_func.js"></script>
+        <script src="/scripts/js/header/header_func.js"></script>
     </head>
-    <body onresize="resize()" onload="init()" style="max-width: 1980px;">
-        <?php include("templates/shop_main/shop_header.html")?>
+    <body onresize="resize()" onload="init()">
+        <?php include("templates/shop_main/shop_header.php")?>
         <div class="body_main">
             <ul class="route_list">
                 <li>Главная</li>

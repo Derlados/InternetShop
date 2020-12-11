@@ -1,0 +1,60 @@
+.data {
+    width: 800px;
+    min-width: 700px;
+}
+
+.point {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: max-content;
+    padding-top: 20px;
+}
+
+.mark {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(221, 221, 221);
+    min-width: 20px;
+    padding: 3px;
+    margin-right: 20px;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-left: 46px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    padding-bottom: 30px;
+}
+
+.header_text {
+    padding-bottom: 5px;
+    color: rgb(163, 163, 163);
+    font-size: 14px;
+}
+
+.data_text {
+    height: 35px;
+    font-size: 16px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+    outline: none;
+}
+
+.error_text {
+    visibility: visible;
+    font-size: 14px;
+    color: red;
+    padding-top: 5px;
+}

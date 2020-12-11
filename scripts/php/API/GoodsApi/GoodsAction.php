@@ -11,14 +11,15 @@
      * @param categoryUrl - категория из url запроса
      * @param page - номер страницы (каждая страница, это 20 товаров максимум)
      */
-    function getGoodPreview(DataBase $db, string $urlCategory, int $page, $filters) {
+    function getGoodPreview(DataBase $db, string $urlCategory, int $page, $filters, $searchWords) {
         $offset = ($page - 1) * 20; // Сдвиг выборки относительно страницы
         
         // Есди фильтры отсутствуют запрос выполняет обычным способом, если присутствует - необходимо сделать более сложный запрос
         $sqlgetGoods = '';
         if ($filters == null) {
+            $whereCond = getModifyWhereWithSearch("WHERE component.id_category = (SELECT id_category FROM category WHERE category.url_category = '$urlCategory')", $searchWords);
             $sqlgetGoods = "    SELECT * FROM `component` 
-                                WHERE component.id_category = (SELECT id_category FROM category WHERE category.url_category = '$urlCategory')";
+                                $whereCond";
         }
         else {
             $sqlFilters = getSqlFiltersBody($filters, $urlCategory);
@@ -27,7 +28,6 @@
         }
 
         $sqlgetGoods .= " LIMIT 20 OFFSET $offset";
-
         $data = $db->execQuery($sqlgetGoods, ReturnValue::GET_ARRAY);
         return $data;
     }
@@ -88,6 +88,42 @@
                     ORDER BY CONVERT(`attribute_value`.`value`, SIGNED INTEGER), `attribute_value`.`value`";
     }
 
+    /** Подготовка основного "тела" SQL запрос для создания фильтров
+     * @param filters - фильтры с url
+     * @param urlCategory - категория взятая с url
+     */
+    function getSqlFiltersBody($filters, $urlCategory) {
+        $countAttr = intval($filters[0]);
+
+        // Создание условия WHERE для запроса c фильтрами
+        $whereCond = "WHERE `category`.`url_category` ='$urlCategory' AND (`components_characteristic`.`id_value` = '$filters[1]'";
+        for ($i = 2; $i < count($filters); ++$i) 
+            $whereCond .= " OR `components_characteristic`.`id_value` = '$filters[$i]'";
+        $whereCond .= ")";
+
+        // Поиск по фильтрам
+        $sqlFilters = " JOIN `components_characteristic` ON `components_characteristic`.`id_component` = `component`.`id_component`
+                        JOIN `category` ON `category`.`id_category` = `component`.`id_category`
+                        $whereCond
+                        GROUP BY `components_characteristic`.`id_component`
+                        HAVING COUNT(*)  = $countAttr";
+
+        return $sqlFilters;
+    }
+
+    function getModifyWhereWithSearch($whereCond, $searchWords) {
+        if ($searchWords != null) {
+            $searchWords = explode(',', $searchWords);
+
+            $whereCond .= "AND (`name` LIKE '%$searchWords[0]%'";
+            for ($i = 1; $i < count($searchWords); ++$i)
+                $whereCond .= " OR `name` LIKE '%$searchWords[$i]%'";
+            $whereCond .= ")";
+        }
+
+        return $whereCond;
+    }
+
     // Запрос на получение всех категорий
     function getAllCategory(DataBase $db) {
         $sqlGetAllCategory = "SELECT * FROM category";
@@ -129,44 +165,22 @@
         return $data;       
     }
 
-    function getCountGoods(DataBase $db, string $urlCategory, $filters) {
+    function getCountGoods(DataBase $db, string $urlCategory, $filters, $searchWords) {
         $sqlCountGoods = '';
 
         if ($filters != null) {
-            $sqlFilters = getSqlFiltersBody($filters, $urlCategory);
+            $sqlFilters = getSqlFiltersBody($filters, $urlCategory, $searchWords);
             $sqlCountGoods = "  SELECT COUNT(*) countGoods FROM (   SELECT COUNT(*)  FROM `component`
                                                                     $sqlFilters) newTable";
         } else {
+            $whereCond = getModifyWhereWithSearch("WHERE `component`.`id_category`= (SELECT id_category FROM category WHERE category.url_category = '$urlCategory')", $searchWords);
             $sqlCountGoods = "  SELECT COUNT(*) as countGoods
                                 FROM `component` 
-                                WHERE `component`.`id_category`= (SELECT id_category FROM category WHERE category.url_category = '$urlCategory')";
+                                $whereCond";
         }
 
         $data = $db->execQuery($sqlCountGoods, ReturnValue::GET_OBJECT);
         return intval($data['countGoods']);
-    }
-
-    /** Подготовка основного "тела" SQL запрос для создания фильтров
-     * @param filters - фильтры с url
-     * @param urlCategory - категория взятая с url
-     */
-    function getSqlFiltersBody($filters, $urlCategory) {
-        $countAttr = intval($filters[0]);
-
-        // Создание условия WHERE для запроса c фильтрами
-        $whereCond = "WHERE `category`.`url_category` ='$urlCategory' AND (`components_characteristic`.`id_value` = '$filters[1]'";
-        for ($i = 2; $i < count($filters); ++$i) 
-            $whereCond .= " OR `components_characteristic`.`id_value` = '$filters[$i]'";
-        $whereCond .= ")";
-
-        // Поиск по фильтрам
-        $sqlFilters = " JOIN `components_characteristic` ON `components_characteristic`.`id_component` = `component`.`id_component`
-                        JOIN `category` ON `category`.`id_category` = `component`.`id_category`
-                        $whereCond
-                        GROUP BY `components_characteristic`.`id_component`
-                        HAVING COUNT(*)  = $countAttr";
-
-        return $sqlFilters;
     }
 
     function getSimilarGoods(DataBase $db, Goods $good, $urlCategory) {
@@ -183,7 +197,7 @@
             $filters[$i + 1] = $good->findCharacteristicByName($attribute)['id_value'];
         }
 
-        $data = getGoodPreview($db, $urlCategory, 1, $filters); // Получение самих комплектующих
+        $data = getGoodPreview($db, $urlCategory, 1, $filters, null); // Получение самих комплектующих
         return $data;
     }
 ?>

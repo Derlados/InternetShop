@@ -1,7 +1,9 @@
 .body_main {
-    padding-left: 150px; 
-    padding-right: 150px;
+    max-width: 1600px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
+    margin: 0 auto;
 }
 
 .route_list li {

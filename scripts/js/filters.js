@@ -131,7 +131,9 @@ function deleteFromMap(filter, value) {
 /** Восстановление все значений фильтров в filters
  */
 function restoreFilters() {
-    let filterValues = ((document.location.toString()).match(/filters(=[0-9]+)((,[0-9]+)+)/))[0];
+    let filterValues = ((document.location.toString()).match(/filters(=[0-9]+)((,[0-9]+)+)/));
+    if (filterValues)
+
     filterValues = filterValues.replace('filters=', '').split(',');
 
     htmlFilters = document.getElementById("filters");

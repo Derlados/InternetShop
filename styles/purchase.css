@@ -1,0 +1,33 @@
+.purchase_body {
+    max-width: 1200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.header_purchase {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 2px solid rgba(224, 224, 224, 0.507);
+    padding-bottom: 20px;
+}
+
+.header_purchase .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header_purchase span {
+    font-size: 14px;
+    color: rgb(182, 182, 182);
+}
+
+h1 {
+    font-weight: normal;
+}
+
+

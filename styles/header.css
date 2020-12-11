@@ -10,16 +10,19 @@
     box-sizing: border-box;
 }
 
+.header_holder {
+    outline: 2px solid rgba(224, 224, 224, 0.507);
+}
+
 .header {
     display: flex;
     height: 90px;
-    width: 100%;
-    padding-left: 150px; 
-    padding-right: 150px;
+    max-width: 1600px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    outline-offset: -2px;
-    outline: 2px solid rgba(224, 224, 224, 0.507);
+    margin: 0 auto;
 }
 
 .logo {
@@ -37,40 +40,94 @@
     margin-left: 50px;
 }
 
-.buttons {
-    float: right;
-    height: 50px;
-    min-width: 300px;
-}
-
 .bt_select_category {
     float: left;
     border-radius: 0;
     border: none;
     height: 50px;
-    min-width: 170px;
+    min-width: 200px;
     outline: none;
+    background: rgb(240, 240, 240);
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.bt_search_action {
-    float: left;
-    border-radius: 0;
+.bt_select_category:hover {
+    background: rgb(225, 225, 225);
+}
+
+.bt_select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.bt_select span::after {
+    background-image: url(/Images/Site/drop_arrow.png);
+    background-size: 12px 12px;
+    display: inline-block;
+    margin-left: 10px;
+    width: 12px; 
+    height: 12px;
+    content:"";
+}
+
+.category_list {
+    display: none;
+    filter: drop-shadow(0 2px 4px #cfcfcf);
+}
+
+.category_list div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
     height: 50px;
-    border: none;
+    width: 100%;
     outline: none;
-    min-width: 100px;
-    background-color: #04af00;
+    border: 1px solid rgb(224, 224, 224);
+    background: white;
+}
+
+.category_list div li {
+    text-align: center;
+    font-size: 16px;
 }
 
 .in_search_text {
-    float: left;
-    height: 50px;
-    margin: 0px;
     width: 100%;
-    padding-left: 10px;
-    display: block;
-    outline: none;
-    border: 1px solid rgb(224, 224, 224);
+    border: 0px;
+    padding: 20px;
+    outline-offset: -2px;
+    outline: 2px solid rgba(224, 224, 224, 0.507);
+}
+
+.bt_search_action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+    min-width: 120px;
+    background-color: #04af00;
+    transition: 0.3s;
+}
+
+.bt_search_action:hover {
+    background-color: #059c02; 
+}
+
+.bt_search_action span {
+    color:white;
+    font-size: 20px;
+}
+
+.buttons {
+    float: right;
+    height: 50px;
+    min-width: 300px;
 }
 
 .img_button {

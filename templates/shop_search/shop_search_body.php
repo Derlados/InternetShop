@@ -8,9 +8,10 @@
         <link rel="stylesheet" href="/styles/filters.css">
         <link rel="stylesheet" href="/styles/checkbox_filter.css">
         <script src="/scripts/js/filters.js"></script>
+        <script src="/scripts/js/header/header_func.js"></script>
     </head>
     <body onload="restoreFilters()">
-        <?php include("templates/shop_main/shop_header.html")?>
+        <?php include("templates/shop_main/shop_header.php")?>
         <div class="body_main">
             <ul class="route_list">
                 <li>Главная</li>
@@ -73,13 +74,22 @@
                     </div>
                     <div class="goods_pager">
                         <?php
-                            $pageUri = explode('/page', $_SERVER['REQUEST_URI'])[0];
+                            $uriAndGet = explode('?', $_SERVER['REQUEST_URI']);
+                            $requestUri = $uriAndGet[0];
+
+                            // Выделение части GET запроса если она есть
+                            $searchGet = '';
+                            if ($uriAndGet[1] != null)
+                                $searchGet = '?' . $uriAndGet[1];
+
+                            // Подготовка uri для перехода между страницами
+                            $pageUri = explode('/page', $requestUri)[0];
                             $pageUri = explode(';page', $pageUri)[0];
 
                             if ($receivedFilters != null)
-                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . ';page={page}"';
+                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . ';page={page}' . $searchGet .'"';
                             else
-                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . '/page={page}"';
+                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . '/page={page}' . $searchGet .'"';
 
                             // Создание ссылки на предыдущую страницу если она есть
                             $backPageHref = '';

@@ -4,9 +4,10 @@
         <link rel="stylesheet" href="styles/body_main.css">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/catalog_search.css">
+        <script src="/scripts/js/header/header_func.js"></script>
     </head>
     <body>
-        <?php include("templates/shop_main/shop_header.html")?>
+        <?php include("templates/shop_main/shop_header.php")?>
         <div class="body_main">
             <ul class="route_list">
                 <li>Главная</li>

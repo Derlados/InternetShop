@@ -1,0 +1,71 @@
+.order_header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    border-bottom: 2px;
+    border-bottom: 2px solid rgba(224, 224, 224, 0.507);
+}
+
+.order_header h2 {
+    font-weight: normal;
+}
+
+.point_order_goods {
+    display: flex;
+    flex-direction: column;
+}
+
+.order_goods {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-left: 46px;
+}
+
+.order_good {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 400px;
+    padding-top: 20px;
+}
+
+.order_good img {
+    height: 75px;
+    width: auto;
+}
+
+.goods_name {
+    margin-left: 10px;
+    color: rgb(102, 159, 206);
+    text-decoration: none;
+}
+
+.goods_name:hover {
+    text-decoration: underline;
+}
+
+.goods_name span {
+    font-size: 14px;
+}
+
+.goods_option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goods_option div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.goods_option div .name_option {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: rgb(163, 163, 163);
+}
