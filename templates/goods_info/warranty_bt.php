@@ -1,5 +1,5 @@
 <li>
-    <label class="warranty_bt">
+    <label class="container_bt">
         <input type="radio" name="radio" onclick="checkedRadioWarranty(this)">
         <span class="radio_bt"></span>
         <span class="radio_bt_text">Продление гарантии на <?php echo $i ?> год </span>

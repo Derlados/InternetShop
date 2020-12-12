@@ -1,0 +1,13 @@
+.point_payment {
+    border-bottom: 2px solid rgba(224, 224, 224, 0.507);
+}
+
+.payment_list {
+    list-style-type: none;
+}
+
+.correct_label {
+    display: none;
+    margin-top: 10px;
+    padding-left: 40px;
+}

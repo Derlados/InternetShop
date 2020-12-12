@@ -1,8 +1,8 @@
-.warranty_bt {
+.container_bt {
     display: flex;
     align-content: center;
     align-items: center;
-    position: relative;
+    position: relative;   
     font-size: 14px;
     margin-left: 34px;
     margin-top: 14px;
@@ -12,19 +12,22 @@
     user-select: none;
 }
 
-.warranty_bt input {
+.container_bt input {
     position: absolute;
+
     opacity: 0;
     height: 0;
     width: 0;
 }
 
 .radio_bt {
+    box-sizing: border-box;
     height: 24px;
     width: 24px;
     cursor: pointer;
     border: 2px solid rgb(206, 206, 206);
     border-radius: 50%;
+
 }
 
 .radio_bt_text {
@@ -36,6 +39,7 @@
     border: 2px solid rgb(116, 116, 116);
 }
 
-.warranty_bt input:checked ~ .radio_bt {
-    border: 7px solid #04af00;
+.container_bt input:checked ~ .radio_bt {
+    transition: 0.1s;
+    border: 6px solid #04af00;
 }

@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/styles/header.css">
         <link rel="stylesheet" href="/styles/goods_info_head.css">
         <link rel="stylesheet" href="/styles/checkbox_warranty.css">
-        <link rel="stylesheet" href="/styles/radio_button_warranty.css">
+        <link rel="stylesheet" href="/styles/radio_button.css">
         <link rel="stylesheet" href="/styles/stats_and_desc.css">
         <link rel="stylesheet" href="/styles/similar_goods.css">
         <script src="/scripts/js/goods_info/resize_blocks.js"></script>

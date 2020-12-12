@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles/purchase.css">
-        <link rel="stylesheet" href="styles/purchase_form.css">
-        <link rel="stylesheet" href="styles/order_goods.css">
+        <link rel="stylesheet" href="styles/purchase_form/purchase.css">
+        <link rel="stylesheet" href="styles/purchase_form/purchase_form.css">
+        <link rel="stylesheet" href="styles/purchase_form/order_goods.css">
+        <link rel="stylesheet" href="styles/purchase_form/delivery.css">
+        <link rel="stylesheet" href="styles/radio_button.css">
+        <link rel="stylesheet" href="styles/purchase_form/payment.css">
+        <link rel="stylesheet" href="styles/purchase_form/finish_purchase.css">
+        <script src="scripts/js/purchase/purchase_form.js"></script>
     </head>
-    <body>
+    <body onload="init()">
         <div class="purchase_body">
             <div class="header_purchase">
                 <a class="logo" href="http://192.168.1.3/">
@@ -14,7 +19,7 @@
                 <span>Консультации по телефону: +38 044 537 02 22</span>
             </div>
             <h1 class="">Оформление заказа</h1>
-            <form>
+            <form class="purchase_form">
                 <div class="data">
                     <div class="person_data">
                         <div class="point">
@@ -26,22 +31,22 @@
                         <div class="labels">
                             <div class="label">
                                 <span class="header_text">Фамилия</span>
-                                <input class="data_text" type="text"></input>
+                                <input class="data_text" type="text" onblur="checkInput(this)"></input>
                                 <span class="error_text">Введите в поле фимилию</span>
                             </div>
                             <div class="label">
                                 <span class="header_text">Имя</span>
-                                <input class="data_text" type="text"></input>
+                                <input class="data_text" type="text" onblur="checkInput(this)"></input>
                                 <span class="error_text">Введите в поле имя</span>
                             </div>
                             <div class="label">
                                 <span class="header_text">Мобильный телефон</span>
-                                <input class="data_text" type="text"></input>
+                                <input class="data_text" type="text" onblur="checkInput(this)"></input>
                                 <span class="error_text">Введите в поле мобильный телефон</span>
                             </div>
                             <div class="label">
                                 <span class="header_text">Город</span>
-                                <input class="data_text" type="text"></input>
+                                <input class="data_text" type="text" onblur="checkInput(this)"></input>
                                 <span class="error_text">Введите в поле фимилию</span>
                             </div>
                         </div>
@@ -82,11 +87,142 @@
 
                             </div>
                         </div>
+                        <div class="point_delivery" id="point_delivery">
+                            <div class="point">
+                                <div class="mark">
+                                    <span>2</span>
+                                </div>
+                                <span class="text">Доставка</span>
+                            </div>  
+                            <div сlass="choose_delivery">
+                                <ul class="choose_delivery_list">
+                                    <li class="choose_delivery_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="address" onclick="showHiddenElement('delivery')">
+                                            <span class="radio_bt"></span>
+                                            <div class="radio_bt_text">
+                                                <span>Самовывоз из Новой почты</span>
+                                                <span>Бесплатно</span>
+                                            </div>
+                                        </label>
+                                        <div class="choose_address" onclick="showList(this)">
+                                            <div class="address_text">
+                                                <span>Выберите подходящее отделение</span>
+                                            </div>
+                                            <ul class="address_list">
+                                                <li value="1" onclick="setDelivery(this)">рандомный адрес 1</li>
+                                                <li value="2" onclick="setDelivery(this)">рандомный адрес 2</li>
+                                                <li value="3" onclick="setDelivery(this)">рандомный адрес 3</li>
+                                                <li value="4" onclick="setDelivery(this)">рандомный адрес 4</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="choose_delivery_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="address" onclick="showHiddenElement('delivery')">
+                                            <span class="radio_bt"></span>
+                                            <div class="radio_bt_text">
+                                                <span>Самовывоз из наших магазинов</span>
+                                                <span>Бесплатно</span>
+                                            </div>
+                                        </label>
+                                        <div class="choose_address" onclick="showList(this)">
+                                            <div class="address_text">
+                                                <span id="address_text_1" value="none">Выберите подходящее отделение</span>
+                                            </div>
+                                            <ul class="address_list">
+                                                <li value="1" onclick="setDelivery(this)">рандомный адрес 1</li>
+                                                <li value="2" onclick="setDelivery(this)">рандомный адрес 2</li>
+                                                <li value="3" onclick="setDelivery(this)">рандомный адрес 3</li>
+                                                <li value="4" onclick="setDelivery(this)">рандомный адрес 4</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="point_payment" id="point_payment">
+                            <div class="point">
+                                <div class="mark">
+                                    <span>3</span>
+                                </div>
+                                <span class="text">Способ оплаты</span>
+                            </div>  
+                            <div сlass="choose_payment">
+                                <ul class="payment_list">
+                                    <li class="choose_payment_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="payment" onclick="showHiddenElement('payment')">
+                                            <span class="radio_bt"></span>
+                                            <span class="radio_bt_text">Оплата при получении товара</span>
+                                        </label>
+                                        <div class="label correct_label">
+                                            <span class="header_text">Введите электронную почту</span>
+                                            <input class="data_text" type="text"></input>
+                                            <span class="error_text">Почта не введена</span>
+                                        </div>
+                                    </li>
+                                    <li class="choose_payment_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="payment" onclick="showHiddenElement('payment')">
+                                            <span class="radio_bt"></span>
+                                            <span class="radio_bt_text">Картой онлайн</span>
+                                        </label>
+                                        <div class="label correct_label">
+                                            <span class="header_text">Введите электронную почту</span>
+                                            <input class="data_text" type="text"></input>
+                                            <span class="error_text">Почта не введена</span>
+                                        </div>
+                                    </li>
+                                    <li class="choose_payment_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="payment" onclick="showHiddenElement('payment')">
+                                            <span class="radio_bt"></span>
+                                            <span class="radio_bt_text">PrivatPay</span>
+                                        </label>
+                                        <div class="label correct_label">
+                                            <span class="header_text">Введите электронную почту</span>
+                                            <input class="data_text" type="text"></input>
+                                            <span class="error_text">Почта не введена</span>
+                                        </div>
+                                    </li>
+                                    <li class="choose_payment_li">
+                                        <label class="container_bt">
+                                            <input type="radio" name="payment" onclick="showHiddenElement('payment')">
+                                            <span class="radio_bt"></span>
+                                            <span class="radio_bt_text">Кредит и оплата частями</span>
+                                        </label>
+                                        <div class="label correct_label">
+                                            <span class="header_text">Введите электронную почту</span>
+                                            <input class="data_text" type="text"></input>
+                                            <span class="error_text">Почта не введена</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <div class="finish_purchase">
-                        
+                    <span class="text_total">Итого</span>
+                    <div class="price_block">
+                        <div class="text_holder">
+                            <span>1 товар на сумму</span>
+                            <span>6999 грн</span>
+                        </div>
+                        <div class="text_holder">
+                            <span>Стоимость доставки</span>
+                            <span>55 грн</span>
+                        </div>
+                    </div>
+                    <div class="total_text_holder">
+                        <span>К оплате</span>
+                        <span><b>7054 грн</b></span>
+                    </div>
+                    <div class="submit_bt">
+                        <span>Подтверждение заказа</span>
+                    </div>
+                    <span class="warning">Получение заказа от 5 000₴ только по паспорту</span>
                 </div>
             </form>
         </div>

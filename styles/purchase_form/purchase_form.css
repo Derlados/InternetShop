@@ -1,3 +1,8 @@
+.purchase_form {
+    display: flex;
+    flex-direction: row;
+}
+
 .data {
     width: 800px;
     min-width: 700px;
@@ -53,8 +58,10 @@
 }
 
 .error_text {
+    display: none;
     visibility: visible;
     font-size: 14px;
     color: red;
     padding-top: 5px;
 }
+
