@@ -146,12 +146,9 @@ function restoreFilters() {
         for (j = 0; j < htmlFilterList.length; ++j) {
             htmlFilterValue = htmlFilterList[j].children[0];
             let filterValue = htmlFilterValue.getAttribute('value');
-            console.log(filterValue);
 
             if (htmlFilterValue.checked) 
                 addToMap(filterGroupId, filterValue)
         }
     }
-
-    console.log(filters);
 }

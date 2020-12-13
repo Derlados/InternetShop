@@ -23,13 +23,11 @@
         }
 
 
-        /* Выполнение запроса
-        * Параметры:
-        * query - запрос
-        * response - true/false ожидание ответа
+        /** Выполнение запроса
+        * @param query - запрос
+        * @param returnValue - тип возвращаемого значения
         */
-        public function execQuery($query, int $returnValue)
-        {  
+        public function execQuery($query, int $returnValue) {  
             // Выполнение запроса и получение данных
             $result = mysqli_query($this->connect, $query);   
             
@@ -41,8 +39,7 @@
             // Если ожидается ответ (SELECT запрос), формируется массив данных
             if ($returnValue == ReturnValue::GET_OBJECT)
                 return mysqli_fetch_assoc($result);
-            else if ($returnValue == ReturnValue::GET_ARRAY)
-            {
+            else if ($returnValue == ReturnValue::GET_ARRAY) {
                 if ($result != NULL)
                     $number_of_row = mysqli_num_rows($result);
                 else

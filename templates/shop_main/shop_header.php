@@ -1,6 +1,6 @@
 <div class="header_holder">
     <div class="header">
-        <a class="logo" href="http://<?php echo API::$MAIN_DOMAIN; ?>/">
+        <a class="logo" href="/">
             <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;">
         </a>
         <div class="search">
@@ -35,7 +35,9 @@
             <img class="img_button" src="/Images/Site/call.png">
             <img class="img_button" src="/Images/Site/favorite.png">
             <img class="img_button" src="/Images/Site/compare.png">
-            <img class="img_button" src="/Images/Site/cart.png">
+            <a href="/cart">
+                <img class="img_button" src="/Images/Site/cart.png">
+            </a>
         </div>
     </div>
 </div>

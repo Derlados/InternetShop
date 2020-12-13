@@ -40,27 +40,3 @@
     height: 12px;
     content:"";
 }
-
-.address_list {
-    display: none;
-    height: 120px;
-    overflow-y: scroll;
-    list-style-type:none;
-    padding-left: 0;
-    border-left:  2px solid rgba(99, 99, 99, 0.507);
-    border-right:  2px solid rgba(99, 99, 99, 0.507);
-    border-bottom:  2px solid rgba(99, 99, 99, 0.507);
-}
-
-.address_list li {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    margin-top: -2px;
-    padding-left: 10px;
-    cursor: pointer;
-}
-
-.address_list li:hover {
-    background-color: rgb(226, 226, 226);
-}

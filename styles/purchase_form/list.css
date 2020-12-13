@@ -1,0 +1,24 @@
+.list {
+    display: none;
+    height: 120px;
+    overflow-y: scroll;
+    list-style-type:none;
+    padding-left: 0;
+    margin: 0;
+    border-left:  2px solid rgba(99, 99, 99, 0.507);
+    border-right:  2px solid rgba(99, 99, 99, 0.507);
+    border-bottom:  2px solid rgba(99, 99, 99, 0.507);
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-top: -2px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.list li:hover {
+    background-color: rgb(226, 226, 226);
+}

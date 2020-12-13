@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/styles/checkbox_filter.css">
         <script src="/scripts/js/filters.js"></script>
         <script src="/scripts/js/header/header_func.js"></script>
+        <script src="/scripts/js/cart/cart.js"></script>
     </head>
     <body onload="restoreFilters()">
         <?php include("templates/shop_main/shop_header.php")?>
@@ -87,9 +88,9 @@
                             $pageUri = explode(';page', $pageUri)[0];
 
                             if ($receivedFilters != null)
-                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . ';page={page}' . $searchGet .'"';
+                                $hrefTemplate = 'href="/' . $pageUri . ';page={page}' . $searchGet .'"';
                             else
-                                $hrefTemplate = 'href="http://' . API::$MAIN_DOMAIN . $pageUri . '/page={page}' . $searchGet .'"';
+                                $hrefTemplate = 'href="/' . $pageUri . '/page={page}' . $searchGet .'"';
 
                             // Создание ссылки на предыдущую страницу если она есть
                             $backPageHref = '';

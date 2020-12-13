@@ -8,6 +8,7 @@
         public $count_component;
         public $img;
         public $characteristics;
+        public $id_description;
         public $description;
 
         /** 

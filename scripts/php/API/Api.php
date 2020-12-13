@@ -4,7 +4,6 @@
     //abstract class Api
     abstract class Api
     {
-        public static $MAIN_DOMAIN = "192.168.1.3";
         protected $method; // Метод запроса (GET/POST/PUT/DELETE)     
         protected $requestUri;   
         protected $action; // Название метода для действия

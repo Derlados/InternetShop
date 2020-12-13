@@ -1,4 +1,4 @@
-<a href="http://192.168.1.3/<?php echo $url_category;?>" style="color: black;">
+<a href="/<?php echo $url_category;?>" style="color: black;">
     <div class="content_body_block">
         <img class="block_img" src="<?php echo $img_path; ?>">
         <div class="block_text">

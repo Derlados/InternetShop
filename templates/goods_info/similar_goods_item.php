@@ -1,5 +1,5 @@
 <li class="similar_goods_item">
-    <a href="http://<?php echo API::$MAIN_DOMAIN?>/id=<?php echo $similarGood->id_component?>">
+    <a href="/id=<?php echo $similarGood->id_component?>">
         <img class="goods_img" src="/Images/PC_component/<?php echo "$similarGood->id_category/$similarGood->img" ?>">
         <span class="goods_name"><?php echo $similarGood->name; ?></span>
     </a>
