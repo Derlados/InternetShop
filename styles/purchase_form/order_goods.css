@@ -18,6 +18,7 @@
 .order_goods {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     flex-direction: row;
     padding-left: 46px;
     padding-bottom: 20px;
@@ -71,3 +72,17 @@
     color: rgb(163, 163, 163);
 }
 
+@media (max-width: 925px) {
+    .goods_option {
+        padding-top: 30px;
+    }
+
+    .order_goods {
+        padding-right: 30px;
+        padding-left: 10px;
+    }
+
+    .order_header {
+        width: 100%;
+    }
+}

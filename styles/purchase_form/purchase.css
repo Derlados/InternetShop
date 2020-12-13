@@ -30,4 +30,12 @@ h1 {
     font-weight: normal;
 }
 
+@media (max-width: 925px) {
+    .header_purchase .logo img {
+        display: none;
+    }
 
+    .header_purchase  {
+        justify-content: center;
+    }
+}

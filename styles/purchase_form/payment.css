@@ -11,3 +11,14 @@
     margin-top: 10px;
     padding-left: 40px;
 }
+
+@media (max-width: 925px) {
+    .payment_list {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .correct_label {
+        padding-left: 10px;
+    }
+}

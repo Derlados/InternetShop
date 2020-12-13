@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/purchase_form/purchase.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/purchase_form/purchase_form.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/purchase_form/order_goods.css?<?php echo time();?>">

@@ -6,6 +6,11 @@
     list-style-type: none;
 }
 
+.choose_delivery_list li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .radio_bt_text {
     display: flex;
     justify-content: space-between;
@@ -39,4 +44,15 @@
     width: 12px; 
     height: 12px;
     content:"";
+}
+
+@media (max-width: 925px) {
+    .choose_delivery_list {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .address_text span {
+        font-size: 14px;
+    }
 }
