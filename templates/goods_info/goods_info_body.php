@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/styles/body_main.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/goods_info_head.css">
-        <link rel="stylesheet" href="/styles/checkbox_warranty.css">
-        <link rel="stylesheet" href="/styles/radio_button.css">
-        <link rel="stylesheet" href="/styles/stats_and_desc.css">
-        <link rel="stylesheet" href="/styles/similar_goods.css">
-        <script src="/scripts/js/goods_info/resize_blocks.js"></script>
-        <script src="/scripts/js/goods_info/slider_goods.js"></script>
-        <script src="/scripts/js/goods_info/head_info_func.js"></script>
-        <script src="/scripts/js/header/header_func.js"></script>
+        <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_info_head.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/checkbox_warranty.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/radio_button.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/stats_and_desc.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/similar_goods.css?<?php echo time();?>">
+        <script src="/scripts/js/goods_info/resize_blocks.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/goods_info/slider_goods.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/goods_info/head_info_func.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
     </head>
     <body onresize="resize()" onload="init()">
         <?php include("templates/shop_main/shop_header.php")?>
@@ -37,8 +37,8 @@
                                 <span>КУПИТЬ</span>
                             </div>
                             <div class="compare_and_favorite_bt">
-                                <img class="img_button" src="Images/Site/compare2.png">
-                                <img class="img_button" src="Images/Site/favorite2.png">
+                                <img class="img_button" src="/Images/Site/compare2.png">
+                                <img class="img_button" src="/Images/Site/favorite2.png">
                             </div>
                         </div>
                         <div class="credit">
@@ -101,7 +101,7 @@
                     <span class="similar_goods_text"><b>Похожие товары</b></span>
                     <div class="similar_list_goods">
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
+                            <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
                         </div>
                         <div class="goods_slider_holder" id="goods_slider_holder">
                             <ul class="goods_slider" id="goods_slider">
@@ -115,7 +115,7 @@
                             </ul>
                         </div>
                         <div class="slide_bt">
-                            <img src="Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
+                            <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
                         </div>
                     </div>
                 </div>

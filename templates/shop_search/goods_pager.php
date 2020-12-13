@@ -29,20 +29,26 @@
              * @return pagerArray - массив элементов для pager-а
              */
             function getPagesArray($currentPage, $maxPages) {
-
                 $pagesArray = array();
-                    
                 // Если страниц меньше десяти в pager вносится просто последовательность от 1 до 9
                 if ($maxPages < 10) {
                     for ($i = 0; $i < $maxPages; ++$i)
-                        $pagesArray[$i] = strval($i + 1);
-                    return $pagesArray;
-                }
-                    
+                        $pagesArray[$i] = strval($i + 1);      
+                }           
                 // Определение левой части pager-а (до последних двух єлементов)
-                if ($currentPage < 6) 
+                if ($currentPage < 6)  {
                     for ($i = 0; $i <= 6; ++$i)
                         $pagesArray[$i] = strval($i + 1);
+                    $pagesArray[7] = "...";
+                    $pagesArray[8] = strval($maxPages);
+                }
+                else if ($maxPages - $currentPage < 4) { // Если текущая страница отличается менее чем на 4 от максимальной, нужно показать страницы без ".." с правой части
+                    $COUNT_ELEMENTS = 9;
+                    $pagesArray[0] = "1";
+                    $pagesArray[1] = "...";
+                    for ($i = 0; $i < 7; ++$i)
+                        $pagesArray[$COUNT_ELEMENTS - $i - 1] = $maxPages - $i;
+                }
                 else {
                     $pagesArray[0] = "1";
                     $pagesArray[1] = "...";
@@ -52,10 +58,10 @@
                         $pagesArray[$iter] = strval($currentPage - $i);
                         ++$iter;
                     }
-                }
 
-                $pagesArray[7] = ($maxPages - $currentPage > 4) ? "..." : $maxPages - 1;
-                $pagesArray[8] = strval($maxPages);
+                    $pagesArray[7] = "...";
+                    $pagesArray[8] = strval($maxPages);
+                }
                 return $pagesArray;
             }
         ?>

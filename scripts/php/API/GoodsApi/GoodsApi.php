@@ -83,11 +83,6 @@
                 $goodsData = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters, $searchWords);
                 $category = getNameCategory($this->db, $urlCaregory)['category'];
 
-                //TODO
-                if ($goodsData == null || $category == null) {
-                   return;
-                }
-
                 // Десериализация всех товаров
                 $goodsItems = array();
                 for ($i = 0; $i < count($goodsData); ++$i)
@@ -95,6 +90,7 @@
 
                 $maxPages = intval(getCountGoods($this->db, $urlCaregory, $receivedFilters, $searchWords) / 20 + 1); // Получение максимального количества страниц
                 $filters = getFilters($this->db, $urlCaregory); // Получение фильтров
+                $categories = getAllCategory($this->db);
 
                 include('templates/shop_search/shop_search_body.php');
             }

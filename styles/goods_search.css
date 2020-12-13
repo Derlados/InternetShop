@@ -65,10 +65,8 @@
     color: white;
     background: green;
     padding: 10px;
-}
-
-.goods_buy_bt { 
     text-align: center;
+    cursor: pointer;
 }
 
 .goods_img_bt {
@@ -136,6 +134,12 @@
 .active {
     background: green;
 }
+
 .active span b {
     color: white;
+}
+
+.notFound {
+    padding: 30px;
+    font-size: 24px;
 }

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles/purchase_form/purchase.css">
-        <link rel="stylesheet" href="styles/purchase_form/purchase_form.css">
-        <link rel="stylesheet" href="styles/purchase_form/order_goods.css">
-        <link rel="stylesheet" href="styles/purchase_form/delivery.css">
-        <link rel="stylesheet" href="styles/radio_button.css">
-        <link rel="stylesheet" href="styles/purchase_form/payment.css">
-        <link rel="stylesheet" href="styles/purchase_form/finish_purchase.css">
-        <link rel="stylesheet" href="styles/purchase_form/list.css">
-        <script src="scripts/js/purchase/purchase_form.js"></script>
+        <link rel="stylesheet" href="styles/purchase_form/purchase.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/purchase_form.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/order_goods.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/delivery.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/radio_button.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/payment.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/finish_purchase.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/purchase_form/list.css?<?php echo time();?>">
+        <script src="scripts/js/purchase/purchase_form.js?<?php echo time();?>"></script>
     </head>
     <body onload="init(); updateAddress(1)">
         <div class="purchase_body">
             <div class="header_purchase">
                 <a class="logo" href="/">
-                    <img src="Images/Site/logo.jpg">
+                    <img src="/Images/Site/logo.jpg">
                 </a>
                 <span>Консультации по телефону: +38 044 537 02 22</span>
             </div>

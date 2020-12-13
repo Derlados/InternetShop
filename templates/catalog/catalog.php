@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles/body_main.css">
-        <link rel="stylesheet" href="styles/header.css">
-        <link rel="stylesheet" href="styles/catalog_search.css">
-        <script src="/scripts/js/header/header_func.js"></script>
+        <link rel="stylesheet" href="styles/body_main.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/header.css?<?php echo time();?>">
+        <link rel="stylesheet" href="styles/catalog_search.css?<?php echo time();?>">
+        <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
     </head>
     <body>
         <?php include("templates/shop_main/shop_header.php")?>

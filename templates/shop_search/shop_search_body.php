@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/styles/body_main.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/shop_search.css">
-        <link rel="stylesheet" href="/styles/goods_search.css">
-        <link rel="stylesheet" href="/styles/filters.css">
-        <link rel="stylesheet" href="/styles/checkbox_filter.css">
-        <script src="/scripts/js/filters.js"></script>
-        <script src="/scripts/js/header/header_func.js"></script>
-        <script src="/scripts/js/cart/cart.js"></script>
+        <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/shop_search.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_search.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/filters.css"?<?php echo time();?>>
+        <link rel="stylesheet" href="/styles/checkbox_filter.css?<?php echo time();?>">
+        <script src="/scripts/js/filters.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/cart/cart.js?<?php echo time();?>"></script>
     </head>
     <body onload="restoreFilters()">
         <?php include("templates/shop_main/shop_header.php")?>
@@ -71,10 +71,17 @@
                                 $good = $goodsItems[$i];
                                 include ("templates/shop_search/goods_item.php");
                             }
+
+                            if (count($goodsItems) == 0) {
+                                echo "<span class='notFound'>Товары не найдены</span>";
+                            }
                         ?>
                     </div>
                     <div class="goods_pager">
                         <?php
+                            if (count($goodsItems) == 0)
+                                return;
+                            
                             $uriAndGet = explode('?', $_SERVER['REQUEST_URI']);
                             $requestUri = $uriAndGet[0];
 
@@ -88,9 +95,9 @@
                             $pageUri = explode(';page', $pageUri)[0];
 
                             if ($receivedFilters != null)
-                                $hrefTemplate = 'href="/' . $pageUri . ';page={page}' . $searchGet .'"';
+                                $hrefTemplate = 'href="' . $pageUri . ';page={page}' . $searchGet .'"';
                             else
-                                $hrefTemplate = 'href="/' . $pageUri . '/page={page}' . $searchGet .'"';
+                                $hrefTemplate = 'href="' . $pageUri . '/page={page}' . $searchGet .'"';
 
                             // Создание ссылки на предыдущую страницу если она есть
                             $backPageHref = '';

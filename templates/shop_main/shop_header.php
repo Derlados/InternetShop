@@ -6,24 +6,22 @@
         <div class="search">
             <div class="bt_select_category" onclick="showCategory()">
                 <div class="bt_select">
-                    <span value="none" id="selected_category">Выберите категорию</span>
+                    <?php 
+                        $url = $categories[0]['url_category'];
+                        $category = $categories[0]['category'];
+                        echo "<span value='$url' id='selected_category'>$category</span>"
+                    ?>        
                 </div>
                 <ul class="category_list" id="category_list">
-                    <div>
-                        <li value="processors" onclick="setCategory(this)">Процессоры</li>
-                    </div>
-                    <div>
-                        <li value="videocard"  onclick="setCategory(this)">Видеокарты</li>
-                    </div>
-                    <div>
-                        <li>Материнские платы</li>
-                    </div>
-                    <div>
-                        <li>Модули памяти для ПК</li>
-                    </div>
-                    <div>
-                        <li>Жесткие диски</li>
-                    </div>
+                    <?php 
+                        for ($i = 0; $i < count($categories); ++$i) {
+                            $url = $categories[$i]['url_category'];
+                            $category = $categories[$i]['category'];
+                            echo "  <div onclick='setCategory(this)' value='$url''>
+                                        <li>$category</li>
+                                    </div>";
+                        }
+                    ?>
                 </ul>
             </div>
             <input class="in_search_text" id="in_search_text" type="text" placeholder="Поиск">
