@@ -72,6 +72,11 @@
     color: rgb(163, 163, 163);
 }
 
+.delete_text {
+    color: red;
+    cursor: pointer;
+}
+
 @media (max-width: 925px) {
     .goods_option {
         padding-top: 30px;

@@ -13,9 +13,10 @@ function addToCart(id) {
     });
 
     request.send(params);
+    alert('Товар добавлен');
 }
 
-function deleteFromCart($id) {
+function deleteFromCart(id, element) {
     const request = new XMLHttpRequest();
     const url = "/cart/id=" + id;
 
@@ -29,4 +30,5 @@ function deleteFromCart($id) {
     });
 
     request.send();
+    element.parentElement.parentElement.style.display = "none"
 }

@@ -28,8 +28,8 @@
 
     function getGoodsFromCart(DataBase $db, $ids) {
         $sqlQuery = "SELECT * FROM `component` WHERE `id_component`= '$ids[0]'";
-        for ($i = 1; $i < count($ids); ++$i)
-            $sqlQuery .= " OR `id_component`= '$ids[$i]'";
+        foreach ($ids as $key => $value)
+            $sqlQuery .= " OR `id_component`= '$value'";
         $data = $db->execQuery($sqlQuery, ReturnValue::GET_ARRAY);
 
         $dataGoods = array();

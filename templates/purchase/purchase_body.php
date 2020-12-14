@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="styles/purchase_form/finish_purchase.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/purchase_form/list.css?<?php echo time();?>">
         <script src="scripts/js/purchase/purchase_form.js?<?php echo time();?>"></script>
+        <script src="scripts/js/cart/cart.js?<?php echo time();?>"></script>
     </head>
     <body onload="init(); updateAddress(1)">
         <div class="purchase_body">

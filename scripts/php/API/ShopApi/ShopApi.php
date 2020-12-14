@@ -40,7 +40,14 @@
             }
         }
 
-        public function deleteAction() { }
+        public function deleteAction() { 
+            $id = explode('id=', $this->requestUri[0])[1];    
+            $cart = new Cart();
+            $cart->delete($id);
+            $cart->save();
+
+            print_r($cart->get());
+        }
 
         public function updateAction() { }
     }
