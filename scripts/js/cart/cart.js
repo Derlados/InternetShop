@@ -13,10 +13,10 @@ function addToCart(id) {
     });
 
     request.send(params);
-    alert('Товар добавлен');
+    alert('Товар добавлен в корзину');
 }
 
-function deleteFromCart(id, element) {
+function deleteFromCart(id, price, element) {
     const request = new XMLHttpRequest();
     const url = "/cart/id=" + id;
 
@@ -31,4 +31,10 @@ function deleteFromCart(id, element) {
 
     request.send();
     element.parentElement.parentElement.style.display = "none"
+
+    let sumPrice = document.getElementById("sum_price_order").innerText
+    sumPrice = parseInt(sumPrice.match(/\d+/)) - price
+    console.log(sumPrice);
+    document.getElementById("sum_price_finish").innerText = sumPrice + " грн"
+    document.getElementById("sum_price_order").innerText = sumPrice + " грн"
 }

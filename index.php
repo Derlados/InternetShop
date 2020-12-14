@@ -3,6 +3,9 @@
     require_once ('scripts/php/API/GoodsApi/GoodsApi.php');    
     require_once ('scripts/php/API/ShopApi/ShopApi.php');
 
+    header("Cache-Control: no-store, no-cache, must-revalidate");
+    header("Expires: " . date("r"));
+
     $str = $_SERVER['REQUEST_URI'];
     
     // Возникла сложность с GET запросами, их параметрі передаются вместе с адресной строкой,

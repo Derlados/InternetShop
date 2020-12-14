@@ -69,7 +69,7 @@
                     <div class="order">
                         <div class="order_header">
                             <h2>Заказ</h2>
-                            <span>на сумму: <?php echo $sumPrice;?> грн</span>
+                            <span id="sum_price_order">на сумму: <?php echo $sumPrice;?> грн</span>
                         </div>
                         <div class="point_order_goods">
                             <?php 
@@ -136,7 +136,7 @@
                     </div>
                     <div class="total_text_holder">
                         <span>К оплате</span>
-                        <span><b><?php echo $sumPrice;?></b></span>
+                        <span id="sum_price_finish"><b><?php echo $sumPrice;?></b></span>
                     </div>
                     <div id="submit_bt" class="submit_bt" onclick="submitPurchase()">
                         <span>Подтверждение заказа</span>

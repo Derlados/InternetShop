@@ -18,6 +18,6 @@
             <span class="name_option">Сумма</span>
             <span class="value_option"><?php echo $good->price;?></span>
         </div>
-        <span class="delete_text" onclick="deleteFromCart(<?php echo $good->id_component;?>, this)">Удалить</span>
+        <span class="delete_text" onclick="deleteFromCart(<?php echo $good->id_component;?>, <?php echo $good->price;?>, this)">Удалить</span>
     </div>
 </div>
