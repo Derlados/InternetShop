@@ -75,6 +75,7 @@
 .delete_text {
     color: red;
     cursor: pointer;
+    font-size: 14px;
 }
 
 @media (max-width: 925px) {
@@ -89,5 +90,10 @@
 
     .order_header {
         width: 100%;
+    }
+
+    .goods_option div {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
