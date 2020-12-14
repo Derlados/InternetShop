@@ -1,10 +1,10 @@
 let allowCloseCategoryList = false
 
-function onClickSearch() {
-    inputText = document.getElementById("in_search_text").value
+function onClickSearch(idCategory, idSearchText) {
+    inputText = document.getElementById(idSearchText).value
     if (inputText.toString() == '')
         return
-    category = document.getElementById("selected_category").getAttribute('value')
+    category = document.getElementById(idCategory).getAttribute('value')
 
     words = (inputText.toString()).split(' ');
     searchHref = 'http://' +  window.location.hostname + '/' + category + '?search=' + words[0]
@@ -16,25 +16,29 @@ function onClickSearch() {
     document.location = searchHref
 }
 
-function showCategory() {
-    categoryList = document.getElementById("category_list")
+function showCategory(id) {
+    categoryList = document.getElementById(id)
     if (categoryList.style.display != "block") {
         categoryList.style.display = "block"
         allowCloseCategoryList = false
     }
 }
 
-function setCategory(element) {
-    selectedCategory = document.getElementById("selected_category")
+function setCategory(element, id) {
+    selectedCategory = document.getElementById(id)
     categoryUrl = element.getAttribute('value')
     selectedCategory.setAttribute('value', categoryUrl)
     selectedCategory.innerText = element.innerText
-    console.log(selectedCategory.innerText)
 }
 
 window.onclick = function (event) {
     categoryList = document.getElementById("category_list")
     if (categoryList.style.display == "block" && allowCloseCategoryList) 
         categoryList.style.display = "none"
+   
+    categoryList = document.getElementById("category_list_media")
+    if (categoryList.style.display == "block" && allowCloseCategoryList) 
+        categoryList.style.display = "none"
+
     allowCloseCategoryList = true
 }

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/shop_search.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/goods_search.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/filters.css"?<?php echo time();?>>
         <link rel="stylesheet" href="/styles/checkbox_filter.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/media_header.css?<?php echo time();?>">
         <script src="/scripts/js/filters.js?<?php echo time();?>"></script>
         <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
         <script src="/scripts/js/cart/cart.js?<?php echo time();?>"></script>

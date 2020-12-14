@@ -34,6 +34,7 @@
                 if ($maxPages < 10) {
                     for ($i = 0; $i < $maxPages; ++$i)
                         $pagesArray[$i] = strval($i + 1);      
+                    return $pagesArray;
                 }           
                 // Определение левой части pager-а (до последних двух єлементов)
                 if ($currentPage < 6)  {
