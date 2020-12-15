@@ -50,6 +50,7 @@
                 for ($i = 0; $i < count($similarGoodsData); ++$i)
                     $similarGoods[$i] = new Goods($similarGoodsData[$i]);
 
+                $categories = getAllCategory($this->db);
                 include('templates/goods_info/goods_info_body.php');
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {

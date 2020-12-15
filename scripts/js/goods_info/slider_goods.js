@@ -1,4 +1,5 @@
 const WIDTH_SLIDER_ITEM = 250 // Длинна одного товара
+const MAX_ITEMS = 5 // небольшой костыль - иногда тупо слайдер зажирает пространство стрелок
 let currentMaxitems = 0 // Текущее максимальное количество товаров которые помещаются
 
 /** Инициализация объектов при загрузке страницы
@@ -15,7 +16,6 @@ function init() {
  */
 function resize() {
     let modifyValue = checkCurMaxItems() 
-    console.log(modifyValue)
     if (modifyValue !== 0)
         scrollGoods(modifyValue, 1)
 
@@ -46,7 +46,6 @@ function scrollGoods(direction, countScroll) {
         goodsItems[i].style.left = nextOffset + "px"
 }
 
-//TODO
 /** Проверка и установка максимального количества помещающихся в слайдер товаров
 */
 function checkCurMaxItems() {
@@ -54,6 +53,9 @@ function checkCurMaxItems() {
     let width = goodsSliderHolder.offsetWidth
     let newMaxitems = Math.floor(width / WIDTH_SLIDER_ITEM);
     
+    if (newMaxitems > MAX_ITEMS)
+        newMaxitems = MAX_ITEMS;
+
     let modifyValue = 0 
     if (newMaxitems < currentMaxitems)
         modifyValue = -1

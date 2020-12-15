@@ -44,4 +44,8 @@
     .route_list {
         display: none;
     } 
+
+    .component_title {
+        font-size: 120%;
+    }
 }

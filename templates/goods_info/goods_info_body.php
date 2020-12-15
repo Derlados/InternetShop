@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/goods_info_head.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_info/goods_info_head.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/checkbox_warranty.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_info/stats_and_desc.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_info/similar_goods.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/radio_button.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/stats_and_desc.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/similar_goods.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/media_header.css?<?php echo time();?>">
         <script src="/scripts/js/goods_info/resize_blocks.js?<?php echo time();?>"></script>
         <script src="/scripts/js/goods_info/slider_goods.js?<?php echo time();?>"></script>
@@ -20,11 +20,11 @@
         <?php include("templates/shop_main/shop_header.php")?>
         <div class="body_main">
             <ul class="route_list">
-                <li>Главная</li>
-                <li><?php echo $categoryName; ?></li>
-                <li><?php echo $good->name; ?></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/<?php echo $categories[0]['url_category'];?>"><?php echo $categories[0]['category']; ?></a></li>
+                <li><a href="/id=<?php echo $good->id_component;?>"><?php echo $good->name; ?></a></li>
             </ul>
-            <h1 class="component_title"><?php echo $good->name; ?></h1>
+            <h2 class="component_title"><?php echo $good->name; ?></h2>
             <div class="content_body">
                 <div class="goods_info_head">
                     <div class="images">
@@ -90,7 +90,7 @@
                             <span class="hide_bt" onclick="resize_bllock('stats_list_holder', this)">Показать полностью</span>
                         </div>
                     </div>
-                    <div class="block" style="margin-left: 30px;">
+                    <div class="block">
                         <div class="desc">
                             <span style="margin-bottom: 20px;"><b style=" font-size: 32px;">Описание</b></span>
                             <div class="desc_holder" id="desc_holder">
