@@ -12,6 +12,9 @@
     padding: 5px;
     background-color: rgb(2, 54, 11);
 }
+.media_header form {
+    width: 100%;
+}
 
 .media_header input {
     width: 100%;

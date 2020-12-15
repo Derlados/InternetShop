@@ -187,7 +187,7 @@
         // Получение аттрибутов для поиска похожих товаров
         $sqlGetSimilarAttribute = " SELECT `characteristic`.`characteristic` FROM `filters` 
                                     JOIN `characteristic` ON `characteristic`.`id_characteristic` = `filters`.`id_characteristic` 
-                                    WHERE `as_similar`= 1";
+                                    WHERE `as_similar`= 1 AND `filters`.`id_category` = $good->id_category";
         $similarAttr = $db->execQuery($sqlGetSimilarAttribute, ReturnValue::GET_ARRAY);
         
         // Поиск похожих товаров производится по фильтрам

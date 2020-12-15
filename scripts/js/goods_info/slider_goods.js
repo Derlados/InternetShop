@@ -30,6 +30,9 @@ function scrollGoods(direction, countScroll) {
     let goodsSlider = document.getElementById("goods_slider")
     let goodsItems = goodsSlider.children
 
+    if (goodsItems.length <= currentMaxitems)
+        return;
+
     // Получение значений сдвигов (максимально доступгый, текущий и предположительный следующий)
     let maxLeftOffset = (goodsItems.length * WIDTH_SLIDER_ITEM) - countScroll * WIDTH_SLIDER_ITEM
     let currentOffset = parseInt(goodsItems[0].style.left)

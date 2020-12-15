@@ -1,7 +1,10 @@
 <div class="header_holder">
     <div class="media_header">
         <div class="media_search">
-            <input id="in_search_text_media" type="text" placeholder="Поиск" onsubmit="onClickSearch('selected_category_media', 'in_search_text_media')">
+            <form onsubmit="onClickSearch('selected_category_media', 'in_search_text_media'); return false;">
+                <input id="in_search_text_media" type="text" placeholder="Поиск" onsubmit="">
+                <button type="submit" style="display: none"></button>
+            </form>
             <a href="/cart">
                 <img src="/Images/Site/cart.png">
             </a>

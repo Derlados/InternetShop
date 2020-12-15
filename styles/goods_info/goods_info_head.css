@@ -73,6 +73,11 @@
     padding: 10px;
     margin-left: 20px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy_bt:hover {
+    background: green;
 }
 
 .buy_bt span {
@@ -135,4 +140,10 @@
     .credit .buy_bt {
         margin: 10px 0px 10px 0px;
     }
+
+    .buy_bt span {
+        font-size: 20px;
+        color: white;
+    }
+    
 }

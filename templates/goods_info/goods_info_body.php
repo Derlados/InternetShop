@@ -15,6 +15,7 @@
         <script src="/scripts/js/goods_info/slider_goods.js?<?php echo time();?>"></script>
         <script src="/scripts/js/goods_info/head_info_func.js?<?php echo time();?>"></script>
         <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/cart/cart.js?<?php echo time();?>"></script>
     </head>
     <body onresize="resize()" onload="init()">
         <?php include("templates/shop_main/shop_header.php")?>
@@ -37,7 +38,7 @@
                         <div class="main_functions">
                             <span class="price"><?php echo $good->price; ?> грн</span>
                             <div class="buy_bt">
-                                <span>КУПИТЬ</span>
+                                <span onclick="addToCart(<?php echo $good->id_component?>)">КУПИТЬ</span>
                             </div>
                             <div class="compare_and_favorite_bt">
                                 <img class="img_button" src="/Images/Site/compare2.png">
@@ -47,7 +48,7 @@
                         <div class="credit">
                             <span>от <b style="font-size: 20px;"><?php echo floor($good->price / 15); ?> грн / месяц</b> при покупке товара в кредит или оплате частями</span>
                             <div class="buy_bt">
-                                <span style="font-size: 18px;">Купить в кредит</span>
+                                <span style="font-size: 18px;" onclick="addToCart(<?php echo $good->id_component?>)">Купить в кредит</span>
                             </div>
                         </div>
                         <div class="warranty">
@@ -100,28 +101,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="similar_goods">
-                    <span class="similar_goods_text"><b>Похожие товары</b></span>
-                    <div class="similar_list_goods">
-                        <div class="slide_bt">
-                            <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
-                        </div>
-                        <div class="goods_slider_holder" id="goods_slider_holder">
-                            <ul class="goods_slider" id="goods_slider">
-                                <?php
-                                    for ($i = 0; $i < count($similarGoods); ++$i) {
-                                        $similarGood = $similarGoods[$i];
-                                        if ($good->id_component != $similarGoods[$i]->id_component)
-                                            include('templates/goods_info/similar_goods_item.php');
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="slide_bt">
-                            <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
+                <?php if(count($similarGoods) != 1): ?>
+                    <div class="similar_goods">
+                        <span class="similar_goods_text"><b>Похожие товары</b></span>
+                        <div class="similar_list_goods">
+                            <div class="slide_bt">
+                                <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
+                            </div>
+                            <div class="goods_slider_holder" id="goods_slider_holder">
+                                <ul class="goods_slider" id="goods_slider">
+                                    <?php
+                                        for ($i = 0; $i < count($similarGoods); ++$i) {
+                                            $similarGood = $similarGoods[$i];
+                                            if ($good->id_component != $similarGoods[$i]->id_component)
+                                                include('templates/goods_info/similar_goods_item.php');
+                                        }
+
+                                        if (count($similarGoods) == 1)
+                                            echo "<li style='width: 100%;'> Похожих товаров не найдено </li>"
+                                    ?>
+                                </ul>
+                            </div>
+                            <div class="slide_bt">
+                                <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endif;?>
             </div>
         </div>
     </body>
