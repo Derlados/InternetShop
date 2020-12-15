@@ -4,7 +4,7 @@ function onClickSearch(idCategory, idSearchText) {
     inputText = document.getElementById(idSearchText).value
     if (inputText.toString() == '')
         return
-    category = document.getElementById(idCategory).getAttribute('value')
+    category = document.getElementById(idCategory).getAttribute('data-value')
 
     words = (inputText.toString()).split(' ');
     searchHref = 'http://' +  window.location.hostname + '/' + category + '?search=' + words[0]
@@ -26,8 +26,8 @@ function showCategory(id) {
 
 function setCategory(element, id) {
     selectedCategory = document.getElementById(id)
-    categoryUrl = element.getAttribute('value')
-    selectedCategory.setAttribute('value', categoryUrl)
+    categoryUrl = element.getAttribute('data-value')
+    selectedCategory.setAttribute('data-value', categoryUrl)
     selectedCategory.innerText = element.innerText
 }
 

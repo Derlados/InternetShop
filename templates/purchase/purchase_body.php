@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Корзина</title>
         <link rel="stylesheet" href="styles/purchase_form/purchase.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/purchase_form/purchase_form.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/purchase_form/order_goods.css?<?php echo time();?>">
@@ -18,7 +19,7 @@
         <div class="purchase_body">
             <div class="header_purchase">
                 <a class="logo" href="/">
-                    <img src="/Images/Site/logo.jpg">
+                    <img src="/Images/Site/logo.jpg" alt="">
                 </a>
                 <span>Консультации по телефону: +38 044 537 02 22</span>
             </div>
@@ -49,7 +50,7 @@
                                         <?php 
                                             $vailue = $cities[0]['id_city'];
                                             $city = $cities[0]['city'];
-                                            echo "<span value='$vailue'>$city</span>"
+                                            echo "<span data-value='$vailue'>$city</span>"
                                         ?>
                                     </div>
                                     <ul class="list">
@@ -57,7 +58,7 @@
                                             for ($i = 0; $i < count($cities); ++$i) {
                                                 $vailue = $cities[$i]['id_city'];
                                                 $city = $cities[$i]['city'];
-                                                echo "<li value='$vailue' onclick='setListValue(this); updateAddress($vailue)'>$city</li>";
+                                                echo "<li data-value='$vailue' onclick='setListValue(this); updateAddress($vailue)'>$city</li>";
                                             }
                                         ?>
                                     </ul>   
@@ -87,7 +88,7 @@
                                 $numberMark = 2; $markText = 'Доставка';
                                 include('templates/purchase/point.php');
                             ?>
-                            <div сlass="choose_delivery">
+                            <div>
                                 <ul class="choose_delivery_list">
                                     <?php 
                                         for ($i = 0; $i < count($typesDelivery); ++$i) {
@@ -104,7 +105,7 @@
                                 $numberMark = '3'; $markText = 'Способ оплаты';
                                 include('templates/purchase/point.php');
                             ?>
-                            <div сlass="choose_payment">
+                            <div>
                                 <ul class="payment_list">
                                     <?php 
                                         for ($i = 0; $i < count($typesPayment); ++$i) {

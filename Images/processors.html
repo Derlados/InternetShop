@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ru">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/body_main.css?1608055536">
+        <link rel="stylesheet" href="/styles/header.css?1608055536">
+        <link rel="stylesheet" href="/styles/shop_search.css?1608055536">
+        <link rel="stylesheet" href="/styles/goods_search.css?1608055536">
+        <link rel="stylesheet" href="/styles/filters.css"?1608055536>
+        <link rel="stylesheet" href="/styles/checkbox_filter.css?1608055536">
+        <link rel="stylesheet" href="/styles/media_header.css?1608055536">
+        <script src="/scripts/js/shop_search/filters.js?1608055536"></script>
+        <script src="/scripts/js/header/header_func.js?1608055536"></script>
+        <script src="/scripts/js/cart/cart.js?1608055536"></script>
+    </head>
+    <body onload="restoreFilters()">
+        <div class="header_holder">
+    <div class="media_header">
+        <div class="media_search">
+            <form onsubmit="onClickSearch('selected_category_media', 'in_search_text_media'); return false;">
+                <input id="in_search_text_media" type="text" placeholder="Поиск" onsubmit="">
+                <button type="submit" style="display: none"></button>
+            </form>
+            <a href="/cart">
+                <img src="/Images/Site/cart.png" alt="">
+            </a>
+        </div>
+        <div class="bt_select_category_media" onclick="showCategory('category_list_media')">
+            <div class="bt_select_media bt_select_media_arrow">
+                <span data-value='processors' id='selected_category_media'>Процессоры</span>        
+            </div>
+            <ul class="category_list_media" id="category_list_media">
+                  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='processors'>
+                                    <span>Процессоры</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='videocards'>
+                                    <span>Видеокарты</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='motherboeards'>
+                                    <span>Материнские платы</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='ssd'>
+                                    <span>Накопители SSD</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='hdd'>
+                                    <span>Жесткие диски</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='ram'>
+                                    <span>Модули памяти для ПК</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='power_supplies'>
+                                    <span>Блоки питания</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='pc_cases'>
+                                    <span>Корпуса для ПК</span>
+                                </li>  <li class='bt_select_media' onclick='setCategory(this,"selected_category_media")' data-value='coolers'>
+                                    <span>Кулеры для процессоров</span>
+                                </li>            </ul>
+        </div>
+    </div>
+    <div class="header">
+        <a class="logo" href="/">
+            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;" alt="">
+        </a>
+        <div class="search">
+            <div class="bt_select_category" onclick="showCategory('category_list')">
+                <div class="bt_select">
+                    <span data-value='processors' id='selected_category'>Процессоры</span>        
+                </div>
+                <ul class="category_list" id="category_list">
+                      <li onclick='setCategory(this,"selected_category")' data-value='processors'>
+                                        <span>Процессоры</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='videocards'>
+                                        <span>Видеокарты</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='motherboeards'>
+                                        <span>Материнские платы</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='ssd'>
+                                        <span>Накопители SSD</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='hdd'>
+                                        <span>Жесткие диски</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='ram'>
+                                        <span>Модули памяти для ПК</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='power_supplies'>
+                                        <span>Блоки питания</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='pc_cases'>
+                                        <span>Корпуса для ПК</span>
+                                    </li>  <li onclick='setCategory(this,"selected_category")' data-value='coolers'>
+                                        <span>Кулеры для процессоров</span>
+                                    </li>                </ul>
+            </div>
+            <input class="in_search_text" id="in_search_text" type="text" placeholder="Поиск">
+            <div class="bt_search_action" onclick="onClickSearch('selected_category', 'in_search_text')">
+                <span>Найти</span>
+            </div>
+        </div>
+        <div class="buttons">
+            <img class="img_button" src="/Images/Site/call.png" alt="">
+            <img class="img_button" src="/Images/Site/favorite.png" alt="">
+            <img class="img_button" src="/Images/Site/compare.png" alt="">
+            <a href="/cart">
+                <img class="img_button" src="/Images/Site/cart.png" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+        <div class="body_main">
+            <ul class="route_list">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/processors">Процессоры</a></li>
+            </ul>
+            <h2 class="component_title">Процессоры</h2>
+            <div class="filters_bt_media" onclick="setDisplayMediaFilters('block')">
+                <span>Фильтры</span>
+            </div>
+            <div class="content_body">
+                <div class="filters" id="filters">
+                    <div class="media_header_filters">
+                        <img class="logo_media" src="/Images//Site/logo.jpg">
+                        <img class="close_symbol" src="/Images//Site/close.png" onclick="setDisplayMediaFilters('none')">
+                    </div>
+                    <div id="filter_item_0" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Семейство процессора</b></span>
+                                        <img id="filter_img_0" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_0','filter_img_0')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="11" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD A-Series (2)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="13" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Athlon (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="15" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Athlon™ II (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="14" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD FX (5)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="4" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Ryzen 3 (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="2" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Ryzen 5 (16)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="5" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Ryzen 7 (9)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="6" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Ryzen 9 (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="7" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD Sempron (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="12" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Celeron (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="9" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Core ™ i3 (13)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="1" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Core ™ i5 (26)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="3" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Core ™ i7 (14)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="8" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Core ™ i9 (18)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="10" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel Pentium (8)</span>
+</div></div><div id="filter_item_1" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Тип сокета</b></span>
+                                        <img id="filter_img_1" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_1','filter_img_1')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="19" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AM1 (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="22" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AM3+ (5)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="17" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AM4 (46)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="23" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">FM2 (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="24" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">FM2+ (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="21" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">s1150 (2)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="16" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">s1151 (48)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="18" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">s1200 (27)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="20" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">s2066 (6)</span>
+</div></div><div id="filter_item_2" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Количество ядер</b></span>
+                                        <img id="filter_img_2" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_2','filter_img_2')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="29" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">2 ядра (20)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="26" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">4 ядра (32)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="25" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">6 ядер (36)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="27" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">8 ядер (29)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="31" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">10 ядер (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="28" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">12 ядер (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="33" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">14 ядер (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="30" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">16 ядер (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="32" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">18 ядер (1)</span>
+</div></div><div id="filter_item_3" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Частота ядра</b></span>
+                                        <img id="filter_img_3" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_3','filter_img_3')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="51" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">1.45 (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="62" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">2.0 (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="61" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">2.7 (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="56" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">2.8 (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="45" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">2.9 (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="47" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.0 (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="55" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.1 (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="59" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.2 (10)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="58" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.3 (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="48" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.4 (5)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="53" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.5 (7)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="49" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.6 (30)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="46" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.7 (18)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="50" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.8 (15)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="54" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">3.9 (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="57" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">4.0 (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="52" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">4.1 (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="60" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">4.7 (1)</span>
+</div></div><div id="filter_item_4" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Техпроцесс, nm</b></span>
+                                        <img id="filter_img_4" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_4','filter_img_4')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="126" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">7nm (26)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="125" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">14nm (81)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="128" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">22nm (2)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="127" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">28nm (3)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="129" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">32nm (4)</span>
+</div></div><div id="filter_item_5" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Теплопакет (TDP)</b></span>
+                                        <img id="filter_img_5" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_5','filter_img_5')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="134" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">25W (2)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="140" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">35W (4)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="137" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">51W (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="138" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">54W (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="139" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">58W (3)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="130" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">65W (60)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="141" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">84W (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="144" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">88W (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="136" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">91W (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="132" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">95W (23)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="145" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">100W (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="131" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">105W (13)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="133" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">125W (8)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="143" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">127W (1)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="135" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">165W (6)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="142" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">220W (1)</span>
+</div></div><div id="filter_item_6" class="filter_item">
+                                    <div class="filter_group">
+                                        <span class="filter_text"><b>Производитель</b></span>
+                                        <img id="filter_img_6" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox('filter_item_6','filter_img_6')">
+                                    </div><div class="checkbox"> 
+    <input type="checkbox" value="195" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">AMD (54)</span>
+</div><div class="checkbox"> 
+    <input type="checkbox" value="592" onclick="checkedFilter(this) " >
+    <span class="checkmark"></span>
+    <span class="checkmark_text">Intel (83)</span>
+</div></div>                    <div id="filter_finded" class="filter_finded">
+                        <span id="filter_finded_text">Найдено 0</span>
+                        <a onclick="showWithFilters()">Показать</a>
+                    </div>
+                </div>
+                <div class="goods_content">
+                    <div class="goods_list">
+                        <div class="goods_item">
+    <a href="/id=1">
+        <img class="goods_img" src="/Images/PC_component/1/U0333752.png">
+        <span class="goods_name">Процессор INTEL Core™ i5 9400F (BX80684I59400F)</span>
+        <span class="goods_price"><b>4999 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(1)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=2">
+        <img class="goods_img" src="/Images/PC_component/1/U0365032.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 3400G (YD3400C5FHBOX)</span>
+        <span class="goods_price"><b>4859 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(2)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=3">
+        <img class="goods_img" src="/Images/PC_component/1/U0333751.png">
+        <span class="goods_name">Процессор INTEL Core™ i5 9400 (BX80684I59400)</span>
+        <span class="goods_price"><b>5794 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(3)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=5">
+        <img class="goods_img" src="/Images/PC_component/1/U0366220.png">
+        <span class="goods_name">Процессор INTEL Core™ i7 9700 (BX80684I79700)</span>
+        <span class="goods_price"><b>9990 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(5)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=6">
+        <img class="goods_img" src="/Images/PC_component/1/U0434862.png">
+        <span class="goods_name">Процессор INTEL Core™ i5 10400 (BX8070110400)</span>
+        <span class="goods_price"><b>6192 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(6)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=7">
+        <img class="goods_img" src="/Images/PC_component/1/U0472357.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 5600X (100-000000065)</span>
+        <span class="goods_price"><b>10496 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(7)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=8">
+        <img class="goods_img" src="/Images/PC_component/1/U0290345.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 2600 (YD2600BBAFBOX)</span>
+        <span class="goods_price"><b>4328 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(8)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=9">
+        <img class="goods_img" src="/Images/PC_component/1/U0435240.png">
+        <span class="goods_name">Процессор AMD Ryzen 3 3100 (100-100000284BOX)</span>
+        <span class="goods_price"><b>3310 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(9)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=10">
+        <img class="goods_img" src="/Images/PC_component/1/U0472351.png">
+        <span class="goods_name">Процессор AMD Ryzen 7 5800X (100-100000063WOF)</span>
+        <span class="goods_price"><b>15798 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(10)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=11">
+        <img class="goods_img" src="/Images/PC_component/1/U0365041.png">
+        <span class="goods_name">Процессор AMD Ryzen 7 3700X (100-100000071BOX)</span>
+        <span class="goods_price"><b>10260 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(11)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=12">
+        <img class="goods_img" src="/Images/PC_component/1/U0448118.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 4650G PRO (100-100000143MPK)</span>
+        <span class="goods_price"><b>6125 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(12)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=13">
+        <img class="goods_img" src="/Images/PC_component/1/U0434863.png">
+        <span class="goods_name">Процессор INTEL Core™ i5 10400F (BX8070110400F)</span>
+        <span class="goods_price"><b>5595 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(13)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=14">
+        <img class="goods_img" src="/Images/PC_component/1/U0365040.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 3600X (100-100000022BOX)</span>
+        <span class="goods_price"><b>7649 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(14)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=15">
+        <img class="goods_img" src="/Images/PC_component/1/U0397441.png">
+        <span class="goods_name">Процессор AMD Ryzen 9 3900X (100-100000023MPK)</span>
+        <span class="goods_price"><b>14016 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(15)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=16">
+        <img class="goods_img" src="/Images/PC_component/1/U0394851.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 3500X (100-000000158)</span>
+        <span class="goods_price"><b>4388 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(16)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=17">
+        <img class="goods_img" src="/Images/PC_component/1/U0467046.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 3500 (100-100000050MPK)</span>
+        <span class="goods_price"><b>4168 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(17)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=18">
+        <img class="goods_img" src="/Images/PC_component/1/U0454311.png">
+        <span class="goods_name">Процессор AMD Ryzen 3 4350G PRO (100-100000148MPK)</span>
+        <span class="goods_price"><b>4594 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(18)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=19">
+        <img class="goods_img" src="/Images/PC_component/1/U0474457.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 PRO 3350G (YD3350C5M4MFH)</span>
+        <span class="goods_price"><b>4047 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(19)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=20">
+        <img class="goods_img" src="/Images/PC_component/1/U0448117.png">
+        <span class="goods_name">Процессор AMD Ryzen 5 3600XT (100-100000281BOX)</span>
+        <span class="goods_price"><b>8062 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(20)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div><div class="goods_item">
+    <a href="/id=21">
+        <img class="goods_img" src="/Images/PC_component/1/U0439236.png">
+        <span class="goods_name">Процессор INTEL Core™ i7 10700K (BX8070110700K)</span>
+        <span class="goods_price"><b>13450 ГРН</b></span>
+        <div class="goods_buttons">
+            <a onclick="addToCart(21)">
+                <span class="goods_buy_bt">Купить</span>
+            </a>
+            <img class="goods_img_bt" src="/Images/Site/favorite2.png">
+            <img class="goods_img_bt" src="/Images/Site/compare2.png">
+        </div>
+    </a>
+</div>                    </div>
+                    <div class="goods_pager">
+                        <div class="goods_pager">
+    <a >
+        <img class="pager_arrow" src="/Images/Site/pager_arrow_back.png">
+    </a>
+    <div class="pages_numbers">
+        <a href="/processors/page=1" class="active">
+                        <span><b>1</b></span>
+                      </a><a href="/processors/page=2" class="">
+                        <span><b>2</b></span>
+                      </a><a href="/processors/page=3" class="">
+                        <span><b>3</b></span>
+                      </a><a href="/processors/page=4" class="">
+                        <span><b>4</b></span>
+                      </a><a href="/processors/page=5" class="">
+                        <span><b>5</b></span>
+                      </a><a href="/processors/page=6" class="">
+                        <span><b>6</b></span>
+                      </a><a href="/processors/page=7" class="">
+                        <span><b>7</b></span>
+                      </a>    </div>
+    <a href="/processors/page=2">
+        <img class="pager_arrow" src="/Images/Site/pager_arrow_next.png">
+    </a>
+</div>                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

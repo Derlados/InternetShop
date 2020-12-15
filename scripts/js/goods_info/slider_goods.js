@@ -25,6 +25,7 @@ function resize() {
 
 /** Скроллинг слайдера
  * @param direction - направление скроллинга (-1 вправл, 1 - влево) 
+ * @param countScroll - количество элементов на скроллинг
  */
 function scrollGoods(direction, countScroll) {
     let goodsSlider = document.getElementById("goods_slider")

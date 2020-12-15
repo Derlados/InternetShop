@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?php echo $good->name; ?></title>
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/goods_info/goods_info_head.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/checkbox_warranty.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/goods_info/checkbox_warranty.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/goods_info/stats_and_desc.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/goods_info/similar_goods.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/radio_button.css?<?php echo time();?>">
@@ -29,20 +30,31 @@
             <div class="content_body">
                 <div class="goods_info_head">
                     <div class="images">
-                        <img src="/Images/PC_component/<?php echo  "$good->id_category/$good->img"; ?>">
+                        <img src="/Images/PC_component/<?php echo  "$good->id_category/$good->img"; ?>" alt="">
                     </div>
                     <div class="purchase_functions">
-                        <div class="availability">
-                            <span><?php echo $good->getAvailibilityStatus(); ?></span>
-                        </div>
+                        <?php 
+                                $availibility = $good->getAvailibilityStatus();
+                                $styleColor = 0;
+                                if ($availibility == "Есть в наличии") 
+                                    $styleColor = "#CCFF99";
+                                else if ($availibility == "Заканчивается")
+                                    $styleColor = "#FFCCCC";
+                                else 
+                                    $styleColor = "#CCCCCC";
+
+                                echo "  <div class='availability' style='background-color: $styleColor'>
+                                            <span >$availibility</span>
+                                        </div>"
+                            ?>
                         <div class="main_functions">
                             <span class="price"><?php echo $good->price; ?> грн</span>
                             <div class="buy_bt">
                                 <span onclick="addToCart(<?php echo $good->id_component?>)">КУПИТЬ</span>
                             </div>
                             <div class="compare_and_favorite_bt">
-                                <img class="img_button" src="/Images/Site/compare2.png">
-                                <img class="img_button" src="/Images/Site/favorite2.png">
+                                <img class="img_button" src="/Images/Site/compare2.png" alt="">
+                                <img class="img_button" src="/Images/Site/favorite2.png" alt="">
                             </div>
                         </div>
                         <div class="credit">
@@ -106,7 +118,7 @@
                         <span class="similar_goods_text"><b>Похожие товары</b></span>
                         <div class="similar_list_goods">
                             <div class="slide_bt">
-                                <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)">
+                                <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)" alt="">
                             </div>
                             <div class="goods_slider_holder" id="goods_slider_holder">
                                 <ul class="goods_slider" id="goods_slider">
@@ -123,7 +135,7 @@
                                 </ul>
                             </div>
                             <div class="slide_bt">
-                                <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)">
+                                <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)" alt="">
                             </div>
                         </div>
                     </div>

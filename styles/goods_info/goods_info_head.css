@@ -41,13 +41,12 @@
 .availability {
     display: flex;
     align-items: center;
-    background-color: rgb(255, 222, 203);
+    background-color: rgb(230, 230, 230);
     width: max-content;
 }
 
 .availability span {
     font-size: 14px;
-    color: red;
     padding: 10px;
     width: auto;
 }

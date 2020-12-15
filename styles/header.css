@@ -84,7 +84,7 @@
     filter: drop-shadow(0 2px 4px #cfcfcf);
 }
 
-.category_list div {
+.category_list li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +97,7 @@
     background: white;
 }
 
-.category_list div li {
+.category_list li span {
     text-align: center;
     font-size: 14px;
 }

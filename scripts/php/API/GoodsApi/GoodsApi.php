@@ -36,21 +36,23 @@
                 }
             }
             else if (preg_match("/id=([0-9])+/", $this->requestUri[0]) != false) {
+                // Получение текущего элемента
                 $idGoods = str_replace('id=', '', $this->requestUri[0]);
-
                 $good = new Goods(getGoodInfoByid($this->db, $idGoods));
                 $good ->characteristics = getFullCharacteristic($this->db, $idGoods);
                 
+                // Информация о категории
                 $categoryInfo = getCategoryInfo($this->db, $good->id_category);
                 $categoryName = $categoryInfo['category'];
                 $categoryUrl = $categoryInfo['url_category'];
+                $categories = getAllCategory($this->db); // Все категории (нужны тупо для хедера)
 
+                // Получение списка похожих товаров
                 $similarGoodsData = getSimilarGoods($this->db, $good, $categoryUrl);
                 $similarGoods = array();
                 for ($i = 0; $i < count($similarGoodsData); ++$i)
                     $similarGoods[$i] = new Goods($similarGoodsData[$i]);
 
-                $categories = getAllCategory($this->db);
                 include('templates/goods_info/goods_info_body.php');
             }
             else if (preg_match("/([a-z])+/", $this->requestUri[0]) != false) {

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Магазин комплектующего</title>
         <link rel="stylesheet" href="styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/header.css?<?php echo time();?>">
         <link rel="stylesheet" href="styles/catalog_search.css?<?php echo time();?>">

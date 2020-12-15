@@ -1,5 +1,10 @@
 let warranty = 0 // TODO
 
+/** Нажатие на чекмарку. 
+ * Когда она стновится активно - первая радиокнопка тоже становится активной
+ * Если марка стала неактивной - так же убираются радиокнопки
+ * @param checkmark - сам маркер
+ */
 function checkedWarranty(checkmark) {
     liWarrantyBt = document.getElementById("warranty_year").children
     for (i = 0; i < liWarrantyBt.length; ++i)
@@ -10,6 +15,9 @@ function checkedWarranty(checkmark) {
     }
 }
 
+/** Нажатие на радиокнопку влечет за собой так же активацию марки
+ * @param radioBt - сама кнопка
+ */
 function checkedRadioWarranty(radioBt) {
     checkmark = document.getElementById("checkmark_warranty")
 

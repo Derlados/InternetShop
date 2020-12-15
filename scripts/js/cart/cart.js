@@ -1,3 +1,6 @@
+/** AJAX POST запрос на добавление товара в корзину
+ * @param id - id товара который пользователь добавил в корзину
+ */
 function addToCart(id) {
     const request = new XMLHttpRequest();
     const url = "/cart";
@@ -16,6 +19,11 @@ function addToCart(id) {
     alert('Товар добавлен в корзину');
 }
 
+/** Удаление товара из корзины
+ * @param id - id - товара
+ * @param price - цена товара
+ * @param element - HTML элемент удаляемого товара
+ */
 function deleteFromCart(id, price, element) {
     const request = new XMLHttpRequest();
     const url = "/cart/id=" + id;

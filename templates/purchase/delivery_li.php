@@ -9,7 +9,7 @@
     </label>
     <div class="choose_address" onclick="showList(this)">
         <div class="address_text">
-            <span class="data" value="none">Выберите подходящее отделение</span>
+            <span class="data" data-value="none">Выберите подходящее отделение</span>
         </div>
         <ul id="type_delivery_<?php echo $idTypeDelivery; ?>" class="list">
 

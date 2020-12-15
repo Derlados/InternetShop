@@ -70,8 +70,12 @@
     cursor: pointer;
     text-decoration: underline;
     color: rgb(111, 160, 219);
+    transition: 0.3s;
 }
 
+.hide_bt:hover {
+    color: rgb(46, 91, 146);
+}
 
 @media (max-width: 1050px) {
 

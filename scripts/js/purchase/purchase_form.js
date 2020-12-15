@@ -43,9 +43,9 @@ function showList(element) {
 function setListValue(element) {
     let parent = element.parentElement.parentElement
     let spanText = parent.children[0].children[0]
-    let value = element.getAttribute('value')
+    let value = element.getAttribute('data-value')
 
-    spanText.setAttribute('value', value)
+    spanText.setAttribute('data-value', value)
     spanText.innerText = element.innerText
 }
 
@@ -88,7 +88,7 @@ function setAddresses(addresses) {
             // Создание элемента в списке
             li = document.createElement('li')
             li.setAttribute('onclick', 'setListValue(this)')
-            li.setAttribute('value', addresses[j].id_address)
+            li.setAttribute('data-value', addresses[j].id_address)
             li.innerText = addresses[j].address
             list.appendChild(li)
             ++iterAddr

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html  lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Поиск <?php echo $categories[0]['category']; ?></title>
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/shop_search.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/goods_search.css?<?php echo time();?>">
-        <link rel="stylesheet" href="/styles/filters.css"?<?php echo time();?>>
-        <link rel="stylesheet" href="/styles/checkbox_filter.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/shop_search/shop_search.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/shop_search/goods_search.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/shop_search/filters.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/shop_search/checkbox_filter.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/media_header.css?<?php echo time();?>">
         <script src="/scripts/js/shop_search/filters.js?<?php echo time();?>"></script>
         <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
@@ -28,8 +29,8 @@
             <div class="content_body">
                 <div class="filters" id="filters">
                     <div class="media_header_filters">
-                        <img class="logo_media" src="/Images//Site/logo.jpg">
-                        <img class="close_symbol" src="/Images//Site/close.png" onclick="setDisplayMediaFilters('none')">
+                        <img class="logo_media" src="/Images/Site/logo.jpg" alt="">
+                        <img class="close_symbol" src="/Images/Site/close.png" onclick="setDisplayMediaFilters('none')" alt="">
                     </div>
                     <?php
                         $keys = array_keys($filters);
@@ -43,7 +44,7 @@
                             echo '<div id="'.$filterItemId.'" class="filter_item">
                                     <div class="filter_group">
                                         <span class="filter_text"><b>'.$filterGroup.'</b></span>
-                                        <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')">
+                                        <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')" alt="">
                                     </div>';
 
                             createFilterList($filters[$filterGroup], $receivedFilters);

@@ -6,7 +6,7 @@
                 <button type="submit" style="display: none"></button>
             </form>
             <a href="/cart">
-                <img src="/Images/Site/cart.png">
+                <img src="/Images/Site/cart.png" alt="">
             </a>
         </div>
         <div class="bt_select_category_media" onclick="showCategory('category_list_media')">
@@ -14,7 +14,7 @@
                 <?php 
                     $url = $categories[0]['url_category'];
                     $category = $categories[0]['category'];
-                    echo "<span value='$url' id='selected_category_media'>$category</span>"
+                    echo "<span data-value='$url' id='selected_category_media'>$category</span>"
                 ?>        
             </div>
             <ul class="category_list_media" id="category_list_media">
@@ -23,9 +23,9 @@
                         $url = $categories[$i]['url_category'];
                         $category = $categories[$i]['category'];
                         $id = 'selected_category_media';
-                        echo "  <div class='bt_select_media' onclick='setCategory(this,"."\"$id\"" .")' value='$url'>
-                                    <li>$category</li>
-                                </div>";
+                        echo "  <li class='bt_select_media' onclick='setCategory(this,"."\"$id\"" .")' data-value='$url'>
+                                    <span>$category</span>
+                                </li>";
                     }
                 ?>
             </ul>
@@ -33,7 +33,7 @@
     </div>
     <div class="header">
         <a class="logo" href="/">
-            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;">
+            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;" alt="">
         </a>
         <div class="search">
             <div class="bt_select_category" onclick="showCategory('category_list')">
@@ -41,7 +41,7 @@
                     <?php 
                         $url = $categories[0]['url_category'];
                         $category = $categories[0]['category'];
-                        echo "<span value='$url' id='selected_category'>$category</span>"
+                        echo "<span data-value='$url' id='selected_category'>$category</span>"
                     ?>        
                 </div>
                 <ul class="category_list" id="category_list">
@@ -50,9 +50,9 @@
                             $url = $categories[$i]['url_category'];
                             $category = $categories[$i]['category'];
                             $id = 'selected_category';
-                            echo "  <div onclick='setCategory(this,"."\"$id\"" .")' value='$url'>
-                                        <li>$category</li>
-                                    </div>";
+                            echo "  <li onclick='setCategory(this,"."\"$id\"" .")' data-value='$url'>
+                                        <span>$category</span>
+                                    </li>";
                         }
                     ?>
                 </ul>
@@ -63,11 +63,11 @@
             </div>
         </div>
         <div class="buttons">
-            <img class="img_button" src="/Images/Site/call.png">
-            <img class="img_button" src="/Images/Site/favorite.png">
-            <img class="img_button" src="/Images/Site/compare.png">
+            <img class="img_button" src="/Images/Site/call.png" alt="">
+            <img class="img_button" src="/Images/Site/favorite.png" alt="">
+            <img class="img_button" src="/Images/Site/compare.png" alt="">
             <a href="/cart">
-                <img class="img_button" src="/Images/Site/cart.png">
+                <img class="img_button" src="/Images/Site/cart.png" alt="">
             </a>
         </div>
     </div>
