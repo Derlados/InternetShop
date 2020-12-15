@@ -133,13 +133,12 @@ function deleteFromMap(filter, value) {
 function restoreFilters() {
     let filterValues = ((document.location.toString()).match(/filters(=[0-9]+)((,[0-9]+)+)/));
     if (filterValues)
-
-    filterValues = filterValues.replace('filters=', '').split(',');
+        filterValues = (filterValues.toString()).replace('filters=', '').split(',');
 
     htmlFilters = document.getElementById("filters");
     htmlFilterGroups = htmlFilters.children
     
-    for (i = 0; i < htmlFilterGroups.length - 1; ++i) {
+    for (i = 1; i < htmlFilterGroups.length - 1; ++i) {
         htmlFilterList = htmlFilterGroups[i].children
         filterGroupId = htmlFilterGroups[i].getAttribute('id');
 
@@ -151,4 +150,17 @@ function restoreFilters() {
                 addToMap(filterGroupId, filterValue)
         }
     }
+}
+
+function setDisplayMediaFilters(display) {
+    let filters = document.getElementById("filters");
+    filters.style.display = display
+}
+
+window.onresize = function(event) {
+    let filters = document.getElementById("filters")
+    if (window.innerWidth > 1051)
+        filters.style.display = "block"
+    else
+        filters.style.display = "none";
 }

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/styles/filters.css"?<?php echo time();?>>
         <link rel="stylesheet" href="/styles/checkbox_filter.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/media_header.css?<?php echo time();?>">
-        <script src="/scripts/js/filters.js?<?php echo time();?>"></script>
+        <script src="/scripts/js/shop_search/filters.js?<?php echo time();?>"></script>
         <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
         <script src="/scripts/js/cart/cart.js?<?php echo time();?>"></script>
     </head>
@@ -18,12 +18,19 @@
         <?php include("templates/shop_main/shop_header.php")?>
         <div class="body_main">
             <ul class="route_list">
-                <li>Главная</li>
-                <li><?php echo $category; ?></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/<?php echo $categories[0]['url_category'];?>"><?php echo $categories[0]['category']; ?></a></li>
             </ul>
-            <h1 class="component_title"><?php echo $category; ?></h1>
+            <h2 class="component_title"><?php echo $categories[0]['category']; ?></h2>
+            <div class="filters_bt_media" onclick="setDisplayMediaFilters('block')">
+                <span>Фильтры</span>
+            </div>
             <div class="content_body">
                 <div class="filters" id="filters">
+                    <div class="media_header_filters">
+                        <img class="logo_media" src="/Images//Site/logo.jpg">
+                        <img class="close_symbol" src="/Images//Site/close.png" onclick="setDisplayMediaFilters('none')">
+                    </div>
                     <?php
                         $keys = array_keys($filters);
                         for ($i = 0; $i < count($filters); ++$i) {
@@ -63,7 +70,7 @@
                         }
                     ?>
                     <div id="filter_finded" class="filter_finded">
-                        <span id="filter_finded_text">Найдено 50</span>
+                        <span id="filter_finded_text">Найдено 0</span>
                         <a onclick="showWithFilters()">Показать</a>
                     </div>
                 </div>
@@ -76,7 +83,7 @@
                             }
 
                             if (count($goodsItems) == 0) {
-                                echo "<span class='notFound'>Товары не найдены</span>";
+                                echo "<img class='notFound'>Товары не найдены</img>";
                             }
                         ?>
                     </div>

@@ -6,8 +6,16 @@
     margin: 0 auto;
 }
 
+.route_list a {
+    color: black;
+}
+
 .route_list li {
     display:inline-block;
+}
+
+.route_list li:hover {
+    text-decoration: underline;
 }
 
 .route_list li::after{
@@ -28,10 +36,12 @@
 
 @media (max-width: 1050px) {
     .body_main {
-        max-width: 1600px;
         padding-left: 5px;
         padding-right: 5px;
         padding-top: 5px;
-        margin: 0 auto;
     }
+
+    .route_list {
+        display: none;
+    } 
 }
