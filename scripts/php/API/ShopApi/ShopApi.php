@@ -15,6 +15,7 @@
                 $cart->save();
 
                 print_r($cart->get());
+                return;
             }
         }
 
@@ -46,10 +47,9 @@
             $cart->delete($id);
             $cart->save();
 
-            print_r($cart->get());
+            return;
         }
 
         public function updateAction() { }
     }
-
 ?>

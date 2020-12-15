@@ -45,6 +45,20 @@
     padding: 20px;
 }
 
+.bt_select_media span {
+    padding-right: 10px;
+}
+
+.bt_select_media_arrow::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    float: inline-end;
+    background: url('/Images/Site/drop_arrow.png');
+    background-size: cover;
+}
+
 .category_list_media {
     display: none;
 }

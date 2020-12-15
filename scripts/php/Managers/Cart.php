@@ -12,7 +12,7 @@
         
         public function set($id) {
             if (!in_array($id, $this->data)) {
-                $this->data[] = (int) $id;
+                $this->data[$id] = (int) $id;
             }
         }
         
@@ -35,7 +35,8 @@
         }
 
         public function save() {
-            setcookie($this->name, json_encode($this->data), time() + 30 * 86400);
+            $json = json_encode($this->data);
+            $status = setcookie($this->name, $json, time() + 30 * 86400, '/');
         }
     }
 ?>

@@ -34,7 +34,6 @@ function deleteFromCart(id, price, element) {
 
     let sumPrice = document.getElementById("sum_price_order").innerText
     sumPrice = parseInt(sumPrice.match(/\d+/)) - price
-    console.log(sumPrice);
     document.getElementById("sum_price_finish").innerText = sumPrice + " грн"
     document.getElementById("sum_price_order").innerText = sumPrice + " грн"
 }

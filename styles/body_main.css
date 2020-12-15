@@ -26,3 +26,12 @@
 }
 
 
+@media (max-width: 1050px) {
+    .body_main {
+        max-width: 1600px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        margin: 0 auto;
+    }
+}

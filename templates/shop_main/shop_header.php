@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="bt_select_category_media" onclick="showCategory('category_list_media')">
-            <div class="bt_select_media">
+            <div class="bt_select_media bt_select_media_arrow">
                 <?php 
                     $url = $categories[0]['url_category'];
                     $category = $categories[0]['category'];

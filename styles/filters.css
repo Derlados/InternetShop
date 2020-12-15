@@ -54,3 +54,10 @@
     cursor: pointer;
     color:rgb(79, 91, 255);
 }
+
+@media (max-width: 1050px) {
+    .filters {
+        display: none;
+    }
+
+}
