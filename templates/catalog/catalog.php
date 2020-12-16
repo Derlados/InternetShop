@@ -2,6 +2,7 @@
 <html lang="ru">
     <head>
         <?php include("templates/shop_main/meta_data.html")?>
+        <meta property="og:image" content="http://a0496659.xsph.ru/Images/icon.png">
         <title>Магазин комплектующего</title>
         <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
@@ -24,7 +25,6 @@
                         $url_category = $categories[$i]['url_category'];
                         $category = $categories[$i]['category']; 
                         $img_path = "Images/PC_component/preview_catalog/".$url_category.".png";
-
                         include("catalog_block.php");
                     }
                 ?>

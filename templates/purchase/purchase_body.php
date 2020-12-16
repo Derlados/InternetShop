@@ -2,6 +2,7 @@
 <html lang="ru">
     <head>
         <?php include("templates/shop_main/meta_data.html")?>
+        <meta property="og:image" content="http://a0496659.xsph.ru/Images/icon.png">
         <title>Корзина</title>
         <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/purchase_form/purchase.css?<?php echo time();?>">
@@ -19,11 +20,11 @@
         <div class="purchase_body">
             <div class="header_purchase">
                 <a class="logo" href="/">
-                    <img src="/Images/Site/logo.jpg" alt="">
+                    <img src="/Images/Site/logo.jpg" alt="logo.jpg">
                 </a>
                 <span>Консультации по телефону: +38 044 537 02 22</span>
             </div>
-            <h1 class="">Оформление заказа</h1>
+            <h2 class="">Оформление заказа</h2>
             <form class="purchase_form">
                 <div class="data">
                     <div class="person_data">

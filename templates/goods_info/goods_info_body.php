@@ -2,6 +2,7 @@
 <html lang="ru">
     <head>
         <?php include("templates/shop_main/meta_data.html")?>
+        <meta property="og:image" content="<?php echo "http://a0496659.xsph.ru/Images/PC_component/$good->id_category/$good->img";?>">
         <title><?php echo $good->name; ?></title>
         <link rel="stylesheet" href="styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
@@ -30,7 +31,7 @@
             <div class="content_body">
                 <div class="goods_info_head">
                     <div class="images">
-                        <img src="/Images/PC_component/<?php echo  "$good->id_category/$good->img"; ?>" alt="">
+                        <img <?php echo "src='/Images/PC_component/$good->id_category/$good->img' alt='$good->img'";?>>
                     </div>
                     <div class="purchase_functions">
                         <?php 
@@ -53,8 +54,8 @@
                                 <span onclick="addToCart(<?php echo $good->id_component?>)">КУПИТЬ</span>
                             </div>
                             <div class="compare_and_favorite_bt">
-                                <img class="img_button" src="/Images/Site/compare2.png" alt="">
-                                <img class="img_button" src="/Images/Site/favorite2.png" alt="">
+                                <img class="img_button" src="/Images/Site/compare2.png" alt="compare2.png">
+                                <img class="img_button" src="/Images/Site/favorite2.png" alt="favorite2.png">
                             </div>
                         </div>
                         <div class="credit">
@@ -118,7 +119,7 @@
                         <span class="similar_goods_text"><b>Похожие товары</b></span>
                         <div class="similar_list_goods">
                             <div class="slide_bt">
-                                <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)" alt="">
+                                <img src="/Images/Site/slide_arrow_left.png" onclick="scrollGoods(1, currentMaxitems)" alt="slide_arrow_left">
                             </div>
                             <div class="goods_slider_holder" id="goods_slider_holder">
                                 <ul class="goods_slider" id="goods_slider">
@@ -135,7 +136,7 @@
                                 </ul>
                             </div>
                             <div class="slide_bt">
-                                <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)" alt="">
+                                <img src="/Images/Site/slide_arrow_right.png" onclick="scrollGoods(-1, currentMaxitems)" alt="slide_arrow_right">
                             </div>
                         </div>
                     </div>

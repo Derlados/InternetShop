@@ -2,6 +2,7 @@
 <html  lang="ru">
     <head>
         <?php include("templates/shop_main/meta_data.html")?>
+        <meta property="og:image" content="http://a0496659.xsph.ru/Images/icon.png">
         <title>Поиск <?php echo $categoryName; ?></title>
         <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
@@ -29,8 +30,8 @@
             <div class="content_body">
                 <div class="filters" id="filters">
                     <div class="media_header_filters">
-                        <img class="logo_media" src="/Images/Site/logo.jpg" alt="">
-                        <img class="close_symbol" src="/Images/Site/close.png" onclick="setDisplayMediaFilters('none')" alt="">
+                        <img class="logo_media" src="/Images/Site/logo.jpg" alt="logo.jpg">
+                        <img class="close_symbol" src="/Images/Site/close.png" onclick="setDisplayMediaFilters('none')" alt="close.png">
                     </div>
                     <?php
                         $keys = array_keys($filters);
@@ -44,7 +45,7 @@
                             echo '<div id="'.$filterItemId.'" class="filter_item">
                                     <div class="filter_group">
                                         <span class="filter_text"><b>'.$filterGroup.'</b></span>
-                                        <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')" alt="">
+                                        <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')" alt="filter_arrow_right.png">
                                     </div>';
 
                             createFilterList($filters[$filterGroup], $receivedFilters);
@@ -84,7 +85,7 @@
                             }
 
                             if (count($goodsItems) == 0) {
-                                echo "<img class='notFound'>Товары не найдены</img>";
+                                echo "<span class='notFound' alt='item'>Товары не найдены</span>";
                             }
                         ?>
                     </div>

@@ -1,6 +1,6 @@
 <div class="goods_pager">
     <a <?php echo $backPageHref?>>
-        <img class="pager_arrow" src="/Images/Site/pager_arrow_back.png" alt="">
+        <img class="pager_arrow" src="/Images/Site/pager_arrow_back.png" alt="pager_arrow_back.png">
     </a>
     <div class="pages_numbers">
         <?php
@@ -68,6 +68,6 @@
         ?>
     </div>
     <a <?php echo $nextPageHref?>>
-        <img class="pager_arrow" src="/Images/Site/pager_arrow_next.png" alt="">
+        <img class="pager_arrow" src="/Images/Site/pager_arrow_next.png" alt="pager_arrow_next.png">
     </a>
 </div>

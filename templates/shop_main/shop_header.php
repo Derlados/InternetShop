@@ -6,7 +6,7 @@
                 <button type="submit" style="display: none"></button>
             </form>
             <a href="/cart">
-                <img src="/Images/Site/cart.png" alt="">
+                <img src="/Images/Site/cart.png" alt="cart.png">
             </a>
         </div>
         <div class="bt_select_category_media" onclick="showCategory('category_list_media')">
@@ -33,7 +33,7 @@
     </div>
     <div class="header">
         <a class="logo" href="/">
-            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;" alt="">
+            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;" alt="logo.jpg">
         </a>
         <div class="search">
             <div class="bt_select_category" onclick="showCategory('category_list')">
@@ -63,11 +63,11 @@
             </div>
         </div>
         <div class="buttons">
-            <img class="img_button" src="/Images/Site/call.png" alt="">
-            <img class="img_button" src="/Images/Site/favorite.png" alt="">
-            <img class="img_button" src="/Images/Site/compare.png" alt="">
+            <img class="img_button" src="/Images/Site/call.png" alt="call.png">
+            <img class="img_button" src="/Images/Site/favorite.png" alt="favorite.png">
+            <img class="img_button" src="/Images/Site/compare.png" alt="compare.png">
             <a href="/cart">
-                <img class="img_button" src="/Images/Site/cart.png" alt="">
+                <img class="img_button" src="/Images/Site/cart.png" alt="cart.png">
             </a>
         </div>
     </div>
