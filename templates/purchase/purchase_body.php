@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include("templates/shop_main/meta_data.html")?>
         <title>Корзина</title>
-        <link rel="stylesheet" href="styles/purchase_form/purchase.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/purchase_form.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/order_goods.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/delivery.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/radio_button.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/payment.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/finish_purchase.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/purchase_form/list.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/purchase.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/purchase_form.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/order_goods.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/delivery.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/radio_button.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/payment.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/finish_purchase.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/purchase_form/list.css?<?php echo time();?>">
         <script src="scripts/js/purchase/purchase_form.js?<?php echo time();?>"></script>
         <script src="scripts/js/cart/cart.js?<?php echo time();?>"></script>
     </head>
@@ -146,5 +146,6 @@
                 </div>
             </form>
         </div>
+        <?php include("templates/shop_main/footer.html")?>
     </body>
 </html>

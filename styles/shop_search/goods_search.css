@@ -208,6 +208,7 @@
     .pages_numbers a {
         margin-left: 0px;
         margin-right: 0px;
+        width: 32px;
     }
     
     .pager_arrow {

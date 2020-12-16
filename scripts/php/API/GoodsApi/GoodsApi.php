@@ -84,7 +84,7 @@
 
                 // Получение товаров
                 $goodsData = getGoodPreview($this->db, $urlCaregory, $currentPage, $receivedFilters, $searchWords);
-                $category = getNameCategory($this->db, $urlCaregory)['category'];
+                $categoryName = getNameCategory($this->db, $urlCaregory)['category'];
 
                 // Десериализация всех товаров
                 $goodsItems = array();

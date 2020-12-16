@@ -94,6 +94,7 @@
     .filters {
         display: none;
         position: fixed;
+        overflow-y: scroll;
         top: 0;
         width: 70%;
         height: 100%;
@@ -101,7 +102,7 @@
         margin: 0px;
         margin-left: -5px;
     }
-
+    
     .filters_bt_media  {
         display: flex;
     }

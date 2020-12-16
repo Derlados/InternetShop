@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include("templates/shop_main/meta_data.html")?>
         <title><?php echo $good->name; ?></title>
+        <link rel="stylesheet" href="styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/goods_info/goods_info_head.css?<?php echo time();?>">
@@ -142,5 +142,6 @@
                 <?php endif;?>
             </div>
         </div>
+        <?php include("templates/shop_main/footer.html")?>
     </body>
 </html>

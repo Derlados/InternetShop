@@ -20,8 +20,12 @@ function showHiddenElement(typeElement) {
         displayStyle = "flex"
     }
 
+    console.log(deliveryArray);
     for (i = 0; i < elementsArray.length; ++i) {
-        let inputAddress = elementsArray[i].children[0].children[0]
+        let inputAddress = elementsArray[i].children[0].children[0];
+        if (typeElement == "delivery")
+            inputAddress = inputAddress.children[0]
+
         let addressSpin = elementsArray[i].children[1]
        
         if (inputAddress.checked)
@@ -75,11 +79,11 @@ function updateAddress(id) {
 
 function setAddresses(addresses) {
     iterAddr = 0
-    
+
     for (i = 1;  i <= deliveryArray.length; ++i) {
         let list = document.getElementById("type_delivery_" + i)
         list.innerHTML = ''
-
+     
         // Создания списка адресов
         for (j = iterAddr; j < addresses.length; ++j) {
             if (addresses[j].id_type_delivery != i)
@@ -90,6 +94,7 @@ function setAddresses(addresses) {
             li.setAttribute('onclick', 'setListValue(this)')
             li.setAttribute('data-value', addresses[j].id_address)
             li.innerText = addresses[j].address
+           
             list.appendChild(li)
             ++iterAddr
         }
@@ -117,7 +122,7 @@ function checkAllInput() {
         let inputAddress = deliveryArray[i].children[0].children[0]
         
         if (inputAddress.checked) {
-            if (deliveryArray[i].getElementsByClassName("data")[0].getAttribute('value') != "none")
+            if (deliveryArray[i].getElementsByClassName("data")[0].getAttribute('data-value') != "none")
                 break;
             else
                 return false;

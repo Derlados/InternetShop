@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 .purchase_body {
     max-width: 1200px;
     padding-left: 20px;

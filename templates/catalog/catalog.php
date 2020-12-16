@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include("templates/shop_main/meta_data.html")?>
         <title>Магазин комплектующего</title>
-        <link rel="stylesheet" href="styles/body_main.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/header.css?<?php echo time();?>">
-        <link rel="stylesheet" href="styles/catalog_search.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
+        <link rel="stylesheet" href="/styles/catalog_search.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/media_header.css?<?php echo time();?>">
         <script src="/scripts/js/header/header_func.js?<?php echo time();?>"></script>
     </head>
@@ -30,5 +30,6 @@
                 ?>
             </div>
         </div>
+        <?php include("templates/shop_main/footer.html")?>
     </body>
 </html>

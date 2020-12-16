@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html  lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Поиск <?php echo $categories[0]['category']; ?></title>
+        <?php include("templates/shop_main/meta_data.html")?>
+        <title>Поиск <?php echo $categoryName; ?></title>
+        <link rel="stylesheet" href="/styles/main/footer.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/body_main.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/header.css?<?php echo time();?>">
         <link rel="stylesheet" href="/styles/shop_search/shop_search.css?<?php echo time();?>">
@@ -20,9 +20,9 @@
         <div class="body_main">
             <ul class="route_list">
                 <li><a href="/">Главная</a></li>
-                <li><a href="/<?php echo $categories[0]['url_category'];?>"><?php echo $categories[0]['category']; ?></a></li>
+                <li><a href="/<?php echo $categories[0]['url_category'];?>"><?php echo $categoryName; ?></a></li>
             </ul>
-            <h2 class="component_title"><?php echo $categories[0]['category']; ?></h2>
+            <h2 class="component_title"><?php echo $categoryName; ?></h2>
             <div class="filters_bt_media" onclick="setDisplayMediaFilters('block')">
                 <span>Фильтры</span>
             </div>
@@ -128,5 +128,6 @@
                 </div>
             </div>
         </div>
+        <?php include("templates/shop_main/footer.html")?>
     </body>
 </html>

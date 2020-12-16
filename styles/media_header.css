@@ -4,6 +4,14 @@
     width: 100%;
 }
 
+.media_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(2, 54, 11);
+}
+
 .media_search {
     display: flex;
     flex-direction: row;
