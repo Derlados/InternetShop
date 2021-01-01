@@ -33,7 +33,7 @@
     </div>
     <div class="header">
         <a class="logo" href="/">
-            <img src="/Images/Site/logo.jpg" style="height: 100%; width: auto;" alt="logo.jpg">
+            <img src="/Images/Site/logo.jpg" alt="logo.jpg">
         </a>
         <div class="search">
             <div class="bt_select_category" onclick="showCategory('category_list')">

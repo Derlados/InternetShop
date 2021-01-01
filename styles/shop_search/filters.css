@@ -89,7 +89,6 @@
     height: 70%;
 }
 
-
 @media (max-width: 1050px) {
     .filters {
         display: none;

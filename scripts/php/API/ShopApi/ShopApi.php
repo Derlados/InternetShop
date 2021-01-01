@@ -16,6 +16,18 @@
 
                 print_r($cart->get());
                 return;
+            } 
+            else if ($this->requestUri[0] == 'accept') {
+                $cart = new Cart();
+                $fullName = $_POST['fullName'];    
+                $phone = $_POST['phone'];    
+                $idAddress = $_POST['idAddress'];    
+                $idTypePayment = $_POST['idTypePayment'];    
+                $email = $_POST['email'];     
+                $ids = $cart->get();    
+                addUserOrder($this->db, $fullName, $phone, $idAddress, $idTypePayment, $email, $ids);
+                $cart->deleteAll();
+                $cart->save();
             }
         }
 

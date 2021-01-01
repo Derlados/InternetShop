@@ -2,18 +2,15 @@
     class Cart
     {
         protected $data = [];
-        
         protected $name = 'MY_SHOP_CART';
     
-
         public function __construct() {
             $this->decode();
         }
         
         public function set($id) {
-            if (!in_array($id, $this->data)) {
+            if (!in_array($id, $this->data))
                 $this->data[$id] = (int) $id;
-            }
         }
         
         public function get() {
@@ -21,17 +18,18 @@
         }
         
         public function delete($id){
-            if (false !== $key = array_search($id, $this->data)) {
+            if (false !== $key = array_search($id, $this->data))
                 unset($this->data[$key]);
-            }
+        }
+
+        public function deleteAll() {
+            $data = [];
         }
         
         protected function decode() {        
             $data = $_COOKIE[$this->name] ?? '';
-            
-            if ($data = json_decode($data, true)) {
+            if ($data = json_decode($data, true))
                 $this->data = array_filter($data, 'is_int');
-            }
         }
 
         public function save() {

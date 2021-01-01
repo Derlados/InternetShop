@@ -1,4 +1,5 @@
 let deliveryArray, paymentArray;
+let lastName, firstName, phone, idAddress, idTypePayment, email;
 
 function init() {
     let pointDelivery = document.getElementById("point_delivery")
@@ -105,24 +106,40 @@ function submitPurchase() {
     if (checkAllInput() == false)
         alert("Введите и выберите все необходимые поля")
     else {
+        const request = new XMLHttpRequest();
+        const url = "/cart/accept";
+        const params = "fullName=" + lastName + " " + firstName + "&phone=" + phone + "&idAddress=" + idAddress 
+        + "&idTypePayment=" + idTypePayment + "&email=" + email
+    
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+        request.addEventListener("readystatechange", () => {
+            if(request.readyState === 4 && request.status === 200) {       
+                console.log(request.responseText);
+            }
+        });
+        request.send(params);
+
         alert("Заказ отправлен на обработку")
         window.location = '/';
     }
 }
 
 function checkAllInput() {
-    let inputLastName =  document.getElementById("label_0")
-    let inputFirstName =  document.getElementById("label_1")
-    let inputPhone =  document.getElementById("label_2")
+    lastName =  document.getElementById("label_0").value
+    firstName =  document.getElementById("label_1").value
+    phone =  document.getElementById("label_2").value
 
-    if (inputLastName.value == "" || inputFirstName.value == "" || inputPhone.value == "")
+    if (lastName == "" || firstName == "" || phone == "")
         return false; 
 
     for (i = 0; i < deliveryArray.length; ++i) {
-        let inputAddress = deliveryArray[i].children[0].children[0]
+        let inputAddress = deliveryArray[i].children[0].children[0].children[0]
         
         if (inputAddress.checked) {
-            if (deliveryArray[i].getElementsByClassName("data")[0].getAttribute('data-value') != "none")
+            idAddress = deliveryArray[i].getElementsByClassName("data")[0].getAttribute('data-value')
+            if (idAddress != "none")
                 break;
             else
                 return false;
@@ -132,17 +149,20 @@ function checkAllInput() {
     if (i == deliveryArray.length) return false;
 
     for (i = 0; i < paymentArray.length; ++i) {
-        let payment = paymentArray[i].children[0].children[0]
+        let paymentInput = paymentArray[i].children[0].children[0]
         
-        if (payment.checked) {
-            if (paymentArray[i].getElementsByClassName("data_text")[0].value != "")
+        if (paymentInput.checked) {
+            idTypePayment = paymentArray[i].getAttribute('data-value');
+            email = paymentArray[i].getElementsByClassName("data_text")[0].value;
+            if (email != "")
                 break;
             else
                 return false;
         }
     }
 
-    if (i == paymentArray.length) return false;
+    if (i == paymentArray.length) 
+        return false;
 
     return true;
 }

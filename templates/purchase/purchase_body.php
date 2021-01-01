@@ -111,6 +111,7 @@
                                     <?php 
                                         for ($i = 0; $i < count($typesPayment); ++$i) {
                                             $typePayment = $typesPayment[$i]['type_payment'];
+                                            $idTypePayment = $typesPayment[$i]['id_type_payment'];
                                             include('templates/purchase/payment_li.php');
                                         }
                                     ?>

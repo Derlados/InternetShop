@@ -1,4 +1,4 @@
-<li class="choose_payment_li">
+<li class="choose_payment_li" data-value="<?php echo $idTypePayment; ?>">
     <label class="container_bt">
         <input type="radio" name="payment" onclick="showHiddenElement('payment')">
         <span class="radio_bt"></span>

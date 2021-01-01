@@ -11,7 +11,7 @@
         <div class="address_text">
             <span class="data" data-value="none">Выберите подходящее отделение</span>
         </div>
-        <ul id="type_delivery_<?php echo $idTypeDelivery; ?>" class="list">
+        <ul id="type_delivery_<?php echo $idTypeDelivery; ?>" class="list" data-value="<?php echo $idTypeDelivery; ?>">
 
         </ul>
     </div>

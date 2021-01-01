@@ -38,4 +38,23 @@
 
         return $dataGoods;
     }
+
+    function addUserOrder(DataBase $db, $fullName, $phone, $idAddress, $idTypePayment, $email, $ids) {
+        if (count($ids) == 0)
+            return;
+            
+        $sqlQueryInsertUserOrder = "INSERT INTO `userorder`(`FIO`, `phone`, `id_address`, `id_type_payment`, `email`) 
+                                    VALUES ($fullName,$phone,$idAddress,$idTypePayment, $email)";
+        DataBase::execQuery($sqlQueryInsertUserOrder, ReturnValue::GET_NOTHING);
+
+        $sqlQuery = "SELECT MAX(id_userOrder) as id FROM `userorder`";
+        $idUserOrder = DataBase::execQuery($sqlQuery, ReturnValue::GET_OBJECT)['id'];
+
+        $sqlQueryInsertCart = "INSERT INTO `cart` (id_userOrder, id_component) VALUES ($idUserOrder, $ids[0])";
+        for ($i = 1; $i < count($ids); ++$i)
+            $sqlQueryInsertCart .= "($idUserOrder, $ids[$i])";
+        DataBase::execQuery($sqlQueryInsertCart, ReturnValue::GET_NOTHING);
+
+        return;
+    }
 ?>

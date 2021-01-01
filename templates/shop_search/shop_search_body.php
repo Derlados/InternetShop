@@ -48,7 +48,7 @@
                                         <img id="'.$filterImgId.'" class="filter_img" src="/Images/Site/filter_arrow_right.png" onclick="hideCheckbox(\''.$filterItemId.'\',\''.$filterImgId.'\')" alt="filter_arrow_right.png">
                                     </div>';
 
-                            createFilterList($filters[$filterGroup], $receivedFilters);
+                            createFilterList($filters[$filterGroup], $receivedFilters); // Создание списка фильтров
 
                             echo '</div>';
                         }    

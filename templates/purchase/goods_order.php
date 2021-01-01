@@ -1,6 +1,6 @@
 <div class="order_goods">
     <div class="order_good">
-        <img class="goods_img" <?php echo "src='/Images/PC_component/1/$good->img' alt='$good->img'";?>>
+        <img class="goods_img" <?php echo "src='/Images/PC_component/$good->id_category/$good->img' alt='$good->img'";?>>
         <a class="goods_name" href="/id=<?php echo $good->id_component;?>">
             <span><?php echo $good->name;?></span>
         </a>
